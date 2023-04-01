@@ -7,8 +7,46 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Success")),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Text("Charities near you"),
+            ListView.builder(
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      color: Colors.orange,
+                      child: Column(
+                        children: [
+                          const Expanded(
+                            flex: 3,
+                            child: Image(
+                              image: AssetImage("assets/images/google.png"),
+                              color: Colors.amber,
+                            ),
+                          ),
+                          Expanded(
+                              child: Container(
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: IconButton(
+                                  onPressed: () {}, icon: Icon(Icons.thumb_up)),
+                            ),
+                          ))
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                itemCount: 5,
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true)
+          ],
+        ),
+      ),
     );
   }
 }
