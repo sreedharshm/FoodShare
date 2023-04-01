@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:foodproject/view/homeScreen.dart';
 import 'package:foodproject/view/login.dart';
 
 import 'firebase_options.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LoginScreen(),
+      home: const HomeScreen(),
     );
   }
 }
