@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:foodproject/view/color.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int value = 0;
+  onTap(int index) {
+    setState(() {
+      value = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             const Text("Charities near you"),
             ListView.builder(
+                physics: const ScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -33,9 +49,14 @@ class HomeScreen extends StatelessWidget {
                             color: Colors.white,
                             child: ListTile(
                               leading: IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.thumb_up)),
+                                  onPressed: () {}, icon: Icon(Icons.favorite)),
+                              title: LinearPercentIndicator(
+                                barRadius: Radius.circular(12),
+                              ),
+                              trailing: ElevatedButton(
+                                  onPressed: () {}, child: Text("Continue")),
                             ),
-                          ))
+                          )),
                         ],
                       ),
                     ),
@@ -43,9 +64,19 @@ class HomeScreen extends StatelessWidget {
                 },
                 itemCount: 5,
                 scrollDirection: Axis.vertical,
-                shrinkWrap: true)
+                shrinkWrap: true),
+            Text("Ends here")
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTap,
+        currentIndex: value,
+        selectedItemColor: primary,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
+        ],
       ),
     );
   }

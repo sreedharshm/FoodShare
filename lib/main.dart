@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/homeScreen.dart';
 import 'package:foodproject/view/login.dart';
 
@@ -31,9 +32,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: primary,
       ),
-      home: const LoginScreen(),
+      home: const HomeScreen(),
     );
   }
 }
