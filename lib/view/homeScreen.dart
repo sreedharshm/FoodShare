@@ -10,6 +10,8 @@ import 'package:foodproject/view/profile_screen.dart';
 import 'package:foodproject/view/search_screen.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -24,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       value = index;
     });
   }
+  find me hee;
 
   final screen = [Search(), Add(), Profile(), Notificationscreen()];
 
