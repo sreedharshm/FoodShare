@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:foodproject/view/color.dart';
+import 'package:foodproject/view/Homescren.dart';
+
+import 'package:foodproject/view/add_screen.dart';
+
+import 'package:foodproject/view/notification_screen.dart';
+import 'package:foodproject/view/profile_screen.dart';
+import 'package:foodproject/view/search_screen.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,14 +23,23 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  final screen = const [
+    HomeScreenNav(),
+    Search(),
+    Add(),
+    Profile(),
+    Notificationscreen()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: screen[value],
       appBar: AppBar(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: value,
-        selectedItemColor: primary,
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         items: const [
