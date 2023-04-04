@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
       value = index;
     });
   }
-  find me hee;
+ 
 
   final screen = [Search(), Add(), Profile(), Notificationscreen()];
 
