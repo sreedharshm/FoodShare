@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: primary,
       ),
       home: const HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
