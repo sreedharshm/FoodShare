@@ -1,7 +1,13 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:foodproject/view/add_screen.dart';
 import 'package:foodproject/view/color.dart';
+import 'package:foodproject/view/notification_screen.dart';
+import 'package:foodproject/view/profile_screen.dart';
+import 'package:foodproject/view/search_screen.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,6 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
       value = index;
     });
   }
+  final screen=[Search(),Add(),Profile(),Notificationscreen()];
+  
 
   @override
   Widget build(BuildContext context) {

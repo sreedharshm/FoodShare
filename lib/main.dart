@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: primary,
       ),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
