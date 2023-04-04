@@ -12,7 +12,12 @@ class HomeScreenNav extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const Text("Charities near you"),
+            const Text(style: TextStyle(fontSize:45 ,
+            color: Colors.black87,
+            fontFamily: 'Schyler',
+            fontWeight: FontWeight.w500),
+            "Charities near you"),
+
             ListView.builder(
                 physics: const ScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
