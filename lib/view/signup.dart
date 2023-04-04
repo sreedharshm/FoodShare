@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:foodproject/services/firebase_auth.dart';
 import 'package:foodproject/view/homeScreen.dart';
 
