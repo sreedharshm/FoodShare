@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  final screen = [
+  final screen = const [
     HomeScreenNav(),
     Search(),
     Add(),
