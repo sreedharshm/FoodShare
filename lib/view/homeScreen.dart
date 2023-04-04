@@ -26,7 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const Text("Charities near you"),
+            const Text(
+              "Charities near you",
+              style: TextStyle(),
+            ),
             ListView.builder(
                 physics: const ScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
@@ -34,14 +37,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.4,
-                      color: Colors.orange,
+                      color: Color.fromARGB(255, 227, 227, 227),
                       child: Column(
                         children: [
                           const Expanded(
-                            flex: 3,
+                            flex: 8,
                             child: Image(
+                              width: 100,
                               image: AssetImage("assets/images/google.png"),
-                              color: Colors.amber,
+                              color: Color.fromARGB(255, 197, 197, 197),
                             ),
                           ),
                           Expanded(
@@ -51,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               leading: IconButton(
                                   onPressed: () {}, icon: Icon(Icons.favorite)),
                               title: LinearPercentIndicator(
-                                barRadius: Radius.circular(12),
+                                barRadius: Radius.circular(24),
                               ),
                               trailing: ElevatedButton(
                                   onPressed: () {}, child: Text("Continue")),
@@ -72,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: value,
-        selectedItemColor: primary,
+        selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         items: const [
