@@ -3,8 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class HomeScreen2 extends StatelessWidget {
-  const HomeScreen2({super.key});
+class HomeScreenNav extends StatelessWidget {
+  const HomeScreenNav({super.key});
 
   @override
   Widget build(BuildContext context) {
