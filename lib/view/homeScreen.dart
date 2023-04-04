@@ -23,13 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  final screen = const [
-    HomeScreenNav(),
-    Search(),
-    Add(),
-    Profile(),
-    Notificationscreen()
-  ];
+  final screen = [Search(), Add(), Profile(), Notificationscreen()];
 
   @override
   Widget build(BuildContext context) {
