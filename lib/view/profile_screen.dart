@@ -46,7 +46,6 @@ class Profile1 extends StatelessWidget {
             const SizedBox(height: 30),
             const Divider(),
             const SizedBox(height: 20),
-
             ProfileMenuWidget(
               title: 'Settings',
               icon: LineAwesomeIcons.cog,
