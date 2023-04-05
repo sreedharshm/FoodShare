@@ -7,6 +7,8 @@ class Add extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text("container"),);
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }
