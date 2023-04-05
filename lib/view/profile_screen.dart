@@ -11,8 +11,7 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
-        title:
-            Text('Profile', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text('Profile', style: Theme.of(context).textTheme.displaySmall),
       ),
       body: SingleChildScrollView(
         child: Container(),
