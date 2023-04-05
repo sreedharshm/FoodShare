@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:foodproject/main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'color.dart';
 
 class Add extends StatelessWidget {
   const Add({super.key});
@@ -12,7 +13,7 @@ class Add extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         shadowColor: Colors.transparent,
-        backgroundColor: const Color.fromARGB(255, 241, 241, 241),
+        backgroundColor: tdGrey,
         centerTitle: true,
         titleTextStyle: GoogleFonts.montserrat(
             color: const Color.fromARGB(255, 130, 130, 130),
