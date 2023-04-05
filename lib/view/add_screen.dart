@@ -5,10 +5,28 @@ import 'package:foodproject/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'color.dart';
 
+int currentStep = 0;
 List<Step> getSteps() => [
-      Step(title: Text('Food item'), content: Container()),
-      Step(title: Text("Address"), content: Container()),
-      Step(title: Text("Time"), content: Container())
+      Step(
+        isActive: currentStep >= 0,
+        title: Text('Food item'),
+        content: Container(),
+      ),
+      Step(
+        isActive: currentStep >= 1,
+        title: Text("Address"),
+        content: Container(),
+      ),
+      Step(
+        isActive: currentStep >= 2,
+        title: Text("Time"),
+        content: Container(),
+      ),
+      Step(
+        isActive: currentStep >= 3,
+        title: Text("Complete"),
+        content: Container(),
+      )
     ];
 
 class Add extends StatelessWidget {
@@ -40,7 +58,6 @@ class MyAddPage extends StatefulWidget {
 class _MyAddPageState extends State<MyAddPage> {
   @override
   Widget build(BuildContext context) {
-    int currentStep = 0;
     return Scaffold(
         appBar: AppBar(
           shadowColor: Colors.transparent,
@@ -60,6 +77,7 @@ class _MyAddPageState extends State<MyAddPage> {
           onStepContinue: () {
             setState(() => currentStep += 1);
           },
+          onStepCancel: () => setState(() => currentStep -= 1),
         ));
   }
 }
