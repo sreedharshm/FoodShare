@@ -19,16 +19,17 @@ class Add extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           shadowColor: Colors.transparent,
-          backgroundColor: tdGrey,
-          centerTitle: true,
-          titleTextStyle: GoogleFonts.montserrat(
-              color: const Color.fromARGB(255, 130, 130, 130),
-              fontSize: 20,
-              fontWeight: FontWeight.normal),
-          title: const Text("Donate now"),
+          backgroundColor: Colors.transparent,
+          toolbarHeight: 5,
+          // centerTitle: true,
+          // titleTextStyle: GoogleFonts.montserrat(
+          //     color: const Color.fromARGB(255, 130, 130, 130),
+          //     fontSize: 20,
+          //     fontWeight: FontWeight.normal),
+          // title: const Text("Donate now"),
         ),
         body: Stepper(
-          type: StepperType.horizontal,
+          type: StepperType.vertical,
           steps: getSteps(),
         ));
   }
