@@ -12,10 +12,35 @@ List<Step> getSteps() => [
     ];
 
 class Add extends StatelessWidget {
-  const Add({super.key});
-
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyAddPage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyAddPage extends StatefulWidget {
+  final String title;
+
+  const MyAddPage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  @override
+  _MyAddPageState createState() => _MyAddPageState();
+}
+
+class _MyAddPageState extends State<MyAddPage> {
+  @override
+  Widget build(BuildContext context) {
+    int currentStep = 0;
     return Scaffold(
         appBar: AppBar(
           shadowColor: Colors.transparent,
@@ -31,6 +56,10 @@ class Add extends StatelessWidget {
         body: Stepper(
           type: StepperType.vertical,
           steps: getSteps(),
+          currentStep: currentStep,
+          onStepContinue: () {
+            setState(() => currentStep += 1);
+          },
         ));
   }
 }
