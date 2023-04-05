@@ -75,6 +75,9 @@ class _MyAddPageState extends State<MyAddPage> {
           steps: getSteps(),
           currentStep: currentStep,
           onStepContinue: () {
+            if (currentStep > 3) {
+              setState(() => currentStep = 0);
+            }
             setState(() => currentStep += 1);
           },
           onStepCancel: () => setState(() => currentStep -= 1),
