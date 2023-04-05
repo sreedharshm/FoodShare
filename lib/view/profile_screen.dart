@@ -118,7 +118,7 @@ class ProfileMenuWidget extends StatelessWidget {
           color: Colors.tealAccent,
         ),
       ),
-      title: Text(title, style: Theme.of(context).textTheme.bodyLarge),
+      title: Text(title, style: TextStyle(color: textColor)),
       trailing: Container(
         width: 30,
         height: 30,
