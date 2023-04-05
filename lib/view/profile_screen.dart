@@ -1,103 +1,79 @@
+
 import 'package:flutter/material.dart';
 
-class CharityProfilePage extends StatefulWidget {
+class CustomerProfilePage extends StatefulWidget {
   @override
-  _CharityProfilePageState createState() => _CharityProfilePageState();
+  _CustomerProfilePageState createState() => _CustomerProfilePageState();
 }
 
-class _CharityProfilePageState extends State<CharityProfilePage> {
+class _CustomerProfilePageState extends State<CustomerProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Charity Profile'),
-        backgroundColor: Colors.green,
+        title: Text('Customer Profile'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: CircleAvatar(
-                  radius: 80.0,
-                  backgroundImage: AssetImage('assets/charity.jpg'),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 50.0,
+                  backgroundImage: AssetImage('assets/images/user-image-with-black-background.png'),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: Text(
-                  'Charity Name',
+                SizedBox(height: 20.0),
+                Text(
+                  'User Name',
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: Text(
-                  'Details about the Charity',
-                  textAlign: TextAlign.center,
+                SizedBox(height: 10.0),
+                Text(
+                  'user@mail.com',
                   style: TextStyle(
                     fontSize: 18.0,
+                    color: Colors.grey[600],
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: Text(
-                  'Contact Information',
+                SizedBox(height: 20.0),
+                Text(
+                  'Donations',
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: Text(
-                  'Contact information here',
-                  textAlign: TextAlign.center,
+                SizedBox(height: 10.0),
+                Text(
+                  '50',
                   style: TextStyle(
                     fontSize: 18.0,
+                    color: Colors.green[600],
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: Text(
-                  'Donation Information',
+                SizedBox(height: 20.0),
+                Text(
+                  'Favorite Charities',
                   style: TextStyle(
-                    fontSize: 20.0,
+                    fontSize: 25.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Center(
-                child: Text(
-                  'Donation information here',
-                  textAlign: TextAlign.center,
+                SizedBox(height: 10.0),
+                Text(
+                  'Charity 1\nCharity 2\nCharity 3',
                   style: TextStyle(
                     fontSize: 18.0,
+                    color: Colors.grey[600],
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
