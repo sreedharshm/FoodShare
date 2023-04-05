@@ -35,10 +35,6 @@ dependencies:
   flutter:
     sdk: flutter
   line_awesome_flutter: ^2.0.0
-<<<<<<< HEAD
-  line_awesome_icons: ^1.0.4+2
-=======
->>>>>>> 35e0fc666cf35417c77aaa9d947df790231180b6
   percent_indicator: ^4.2.3
 
 dev_dependencies:
