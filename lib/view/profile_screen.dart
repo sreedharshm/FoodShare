@@ -27,9 +27,9 @@ class Profile1 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            Text('ProfileHeading',
+            Text('NAME',
                 style: Theme.of(context).textTheme.headlineMedium),
-            Text('ProfileSubHeading',
+            Text('Email',
                 style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 20),
             SizedBox(
@@ -54,7 +54,7 @@ class Profile1 extends StatelessWidget {
             ),
             ProfileMenuWidget(
               title: 'History',
-              icon: LineAwesomeIcons.wallet,
+              icon: LineAwesomeIcons.history,
               onPress: () {},
             ),
             ProfileMenuWidget(
@@ -72,15 +72,16 @@ class Profile1 extends StatelessWidget {
             ProfileMenuWidget(
               title: 'Logout',
               icon: LineAwesomeIcons.info,
-              onPress: () {},
-            ),
-            ProfileMenuWidget(
-              title: "Sign Out",
-              icon: LineAwesomeIcons.alternate_sign_out,
               textColor: Colors.red,
-              endIcon: false,
               onPress: () {},
             ),
+            // ProfileMenuWidget(
+            //   title: "Sign Out",
+            //   icon: LineAwesomeIcons.alternate_sign_out,
+            //   textColor: Colors.red,
+            //   endIcon: false,
+            //   onPress: () {},
+           // ),
           ],
         ),
       ),
@@ -115,7 +116,7 @@ class ProfileMenuWidget extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          color: Colors.tealAccent,
+          color: Color.fromARGB(255, 0, 4, 3),
         ),
       ),
       title: Text(title, style: TextStyle(color: textColor)),
@@ -129,7 +130,7 @@ class ProfileMenuWidget extends StatelessWidget {
         child: const Icon(
           LineAwesomeIcons.angle_right,
           size: 18.0,
-          color: Colors.grey,
+          color: Color.fromARGB(255, 4, 0, 0),
         ),
       ),
     );
