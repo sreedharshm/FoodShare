@@ -23,7 +23,6 @@ class Profile extends StatelessWidget {
                 height: 120,
                 child: Icon(Icons.person_3_rounded),
               ),
-<<<<<<< HEAD
               const SizedBox(height: 10),
               Text('Name', style: Theme.of(context).textTheme.headlineMedium),
               Text('Email', style: Theme.of(context).textTheme.bodySmall),
@@ -37,19 +36,6 @@ class Profile extends StatelessWidget {
                         side: BorderSide.none,
                         shape: const StadiumBorder()),
                     child: const Text('Edit Profile')),
-=======
-              SizedBox(height: 10),
-             Text('Name',style: Theme.of(context).textTheme.headlineMedium),
-             Text('Email',style: Theme.of(context).textTheme.bodySmall),
-             const SizedBox(height: 20),
-             SizedBox(width: 200,
-            // child: ElevatedButton(
-             // onPressed: (){}, 
-             // style: ElevatedButton.styleFrom(
-              //  backgroundColor: Color(Colors.yellowAccent,side: BorderSide.none,shape:const StadiumBorder()),
-           //  Text('Edit Profile')),
-
->>>>>>> d57c12dc6588a4d9bc6c45f518cdc4062c114a61
               ),
               // )
             ],
