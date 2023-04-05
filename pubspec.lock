@@ -168,7 +168,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.5"
-  line_awesome_icons:
+  line_awesome_flutter:
     dependency: "direct main"
     description:
       name: line_awesome_flutter
