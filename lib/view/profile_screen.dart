@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 //import 'package:line_awesome_icons/line_awesome_icons.dart';
 
+
 class Profile extends StatelessWidget {
   const Profile({super.key});
 
@@ -10,8 +11,16 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //leading: IconButton(onPressed: (){}, icon: const Icon(LineAwesomeIcons.angle_left)),
+       // leading: IconButton(onPressed: (){}, icon: const Icon(LineAwesomeIcons.angle_left)),
         title: Text('Profile',style: Theme.of(context).textTheme.headlineMedium),
+        actions: [
+          //IconButton(onPressed: (){}, icon: Icon(LineAwesomeIcons.sun : LineAwesomeIcons.moon
+          //)
+          //)
+          IconButton(onPressed: (){}, icon: const Icon(Icons.dark_mode
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
       child: Container(),
