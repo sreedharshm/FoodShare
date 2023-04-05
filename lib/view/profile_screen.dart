@@ -28,11 +28,11 @@ class Profile extends StatelessWidget {
              Text('Email',style: Theme.of(context).textTheme.bodySmall),
              const SizedBox(height: 20),
              SizedBox(width: 200,
-            //  child: ElevatedButton(
-              // onPressed: (){}, 
-              // style: ElevatedButton.styleFrom(
-                // backgroundColor: Color(Colors.yellowAccent,side: BorderSide.none,shape:const StadiumBorder()),
-            //  Text('Edit Profile')),
+            // child: ElevatedButton(
+             // onPressed: (){}, 
+             // style: ElevatedButton.styleFrom(
+              //  backgroundColor: Color(Colors.yellowAccent,side: BorderSide.none,shape:const StadiumBorder()),
+           //  Text('Edit Profile')),
 
               ),
               // )
