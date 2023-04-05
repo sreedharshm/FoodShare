@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
 //
 class Profile1 extends StatelessWidget {
   const Profile1({super.key});
@@ -22,7 +23,7 @@ class Profile1 extends StatelessWidget {
               height: 120,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: const Image(image: AssetImage('ProfileImage')),
+                //child: const Image(image: AssetImage('ProfileImage')),
               ),
             ),
             const SizedBox(height: 30),
