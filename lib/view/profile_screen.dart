@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-//import 'package:line_awesome_icons/line_awesome_icons.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -10,13 +8,14 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //leading: IconButton(onPressed: (){}, icon: const Icon(LineAwesomeIcons.angle_left)),
-        title: Text('Profile',style: Theme.of(context).textTheme.headlineMedium),
+        leading: IconButton(
+            onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
+        title:
+            Text('Profile', style: Theme.of(context).textTheme.headlineMedium),
       ),
       body: SingleChildScrollView(
-      child: Container(),
-        ),
-      );
+        child: Container(),
+      ),
+    );
   }
 }
-
