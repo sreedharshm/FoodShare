@@ -34,7 +34,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screen[value],
-      appBar: AppBar(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         currentIndex: value,
