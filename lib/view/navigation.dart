@@ -35,18 +35,43 @@ class _NavigationScreenState extends State<NavigationScreen> {
     return Scaffold(
       body: screen[value],
       bottomNavigationBar: BottomNavigationBar(
+        selectedIconTheme: const IconThemeData(
+          size: 25,
+        ),
+        unselectedIconTheme: const IconThemeData(
+          size: 25,
+        ),
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        backgroundColor: const Color(0xFF284B63),
         onTap: onTap,
         currentIndex: value,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Color.fromARGB(255, 139, 163, 178),
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: "Add"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), label: "Notifications"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+              activeIcon: Icon(Icons.home),
+              icon: Icon(Icons.home_outlined),
+              label: "Home"),
+          BottomNavigationBarItem(
+              activeIcon: Icon(
+                Icons.search_outlined,
+              ),
+              icon: Icon(Icons.search_outlined),
+              label: "Search"),
+          BottomNavigationBarItem(
+              activeIcon: Icon(Icons.add_box_rounded),
+              icon: Icon(Icons.add_box_outlined),
+              label: "Add"),
+          BottomNavigationBarItem(
+              activeIcon: Icon(Icons.notifications_active),
+              icon: Icon(Icons.notifications_none_outlined),
+              label: "Notifications"),
+          BottomNavigationBarItem(
+              activeIcon: Icon(Icons.person_2_rounded),
+              icon: Icon(Icons.person_2_outlined),
+              label: "Profile"),
         ],
       ),
     );
