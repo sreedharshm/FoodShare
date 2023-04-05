@@ -8,8 +8,9 @@ class Add extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Scaffold(
+    return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(),
         title: const Text("Donate now"),
       ),
     );
