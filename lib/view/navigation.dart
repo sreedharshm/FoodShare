@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:foodproject/view/Homescren.dart';
 
 import 'package:foodproject/view/add_screen.dart';
+import 'package:foodproject/view/home_screen.dart';
 
 import 'package:foodproject/view/notification_screen.dart';
 import 'package:foodproject/view/profile_screen.dart';
 import 'package:foodproject/view/search_screen.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class NavigationScreen extends StatefulWidget {
+  const NavigationScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<NavigationScreen> createState() => _NavigationScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _NavigationScreenState extends State<NavigationScreen> {
   int value = 0;
   onTap(int index) {
     setState(() {
@@ -24,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   final screen = const [
-    HomeScreenNav(),
+    HomeScreen(),
     Search(),
     Add(),
     Notificationscreen(),
@@ -35,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: screen[value],
-      appBar: AppBar(),
       bottomNavigationBar: BottomNavigationBar(
         selectedIconTheme: const IconThemeData(
           size: 25,
