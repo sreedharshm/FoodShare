@@ -27,7 +27,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     Search(),
     Add(),
     Notificationscreen(),
-    CustomerProfilePage()
+    Profile1()
   ];
 
   @override
