@@ -1,8 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foodproject/view/Navigation.dart';
-import 'package:foodproject/view/color.dart';
-import 'package:foodproject/view/login.dart';
 
 import 'firebase_options.dart';
 

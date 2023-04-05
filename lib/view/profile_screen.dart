@@ -15,27 +15,29 @@ class Profile extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding:  EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           child: Column(
-            children:  [
-             SizedBox(
-                width: 120,height: 120,
+            children: [
+              const SizedBox(
+                width: 120,
+                height: 120,
                 child: Icon(Icons.person_3_rounded),
               ),
-              SizedBox(height: 10),
-             Text('Name',style: Theme.of(context).textTheme.headlineMedium),
-             Text('Email',style: Theme.of(context).textTheme.bodySmall),
-             const SizedBox(height: 20),
-             SizedBox(width: 200,
-            //  child: ElevatedButton(
-              // onPressed: (){}, 
-              // style: ElevatedButton.styleFrom(
-                // backgroundColor: Color(Colors.yellowAccent,side: BorderSide.none,shape:const StadiumBorder()),
-            //  Text('Edit Profile')),
-
+              const SizedBox(height: 10),
+              Text('Name', style: Theme.of(context).textTheme.headlineMedium),
+              Text('Email', style: Theme.of(context).textTheme.bodySmall),
+              const SizedBox(height: 20),
+              SizedBox(
+                width: 200,
+                child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.yellowAccent,
+                        side: BorderSide.none,
+                        shape: const StadiumBorder()),
+                    child: const Text('Edit Profile')),
               ),
               // )
-              
             ],
           ),
         ),
