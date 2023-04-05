@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+//
 class Profile1 extends StatelessWidget {
   const Profile1({super.key});
 
