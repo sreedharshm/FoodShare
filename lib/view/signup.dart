@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:foodproject/services/firebase_auth.dart';
-import 'package:foodproject/view/homeScreen.dart';
+import 'package:foodproject/view/Navigation.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (s == "success") {
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const NavigationScreen()),
           (route) => false);
     } else {
       setState(() {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodproject/view/homeScreen.dart';
+import 'package:foodproject/view/Navigation.dart';
+
 import 'package:foodproject/view/signup.dart';
 
 import '../services/firebase_auth.dart';
@@ -26,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (s == "success") {
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const NavigationScreen()),
           (route) => false);
     } else {
       setState(() {
