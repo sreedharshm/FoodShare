@@ -21,7 +21,7 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
               children: <Widget>[
                 CircleAvatar(
                   radius: 50.0,
-                  backgroundImage: AssetImage('assets/images/user-image-with-black-background.png'),
+                  backgroundImage: AssetImage('assets/images/user.png'),
                 ),
                 SizedBox(height: 20.0),
                 Text(
