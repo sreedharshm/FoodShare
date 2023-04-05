@@ -41,7 +41,7 @@ class Profile1 extends StatelessWidget {
             const SizedBox(height: 20),
 
             ProfileMenuWidget(title: 'Settings',icon: LineAwesomeIcons.cog,onPress: (){},),
-            ProfileMenuWidget(title: 'History',icon: LineAwesomeIcons.wallet,onPress: (){},),
+            ProfileMenuWidget(title: 'History',icon: LineAwesomeIcons.history,onPress: (){},),
             ProfileMenuWidget(title: 'App Details',icon: LineAwesomeIcons.user_check,onPress: (){},),
             ProfileMenuWidget(title: 'Help',icon: LineAwesomeIcons.question,onPress: (){},),
             const Divider(color: Colors.grey),
@@ -91,7 +91,7 @@ class ProfileMenuWidget extends StatelessWidget {
         ),
         child:  Icon(LineAwesomeIcons.cog,color: Colors.tealAccent,),
       ),
-      title: Text('ettings',style: Theme.of(context).textTheme.bodyLarge),
+      title: Text('Settings',style: Theme.of(context).textTheme.bodyLarge),
       trailing: Container(
         width: 30,
         height: 30,
