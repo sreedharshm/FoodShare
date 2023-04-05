@@ -25,11 +25,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   final screen = [
     const HomeScreen(),
     const Search(),
-<<<<<<< HEAD
-    Add(),
-=======
      Add(),
->>>>>>> c92f32c5ba6cff5d9225c3c6758e23ec983075af
     const Notificationscreen(),
     Profile1()
   ];
