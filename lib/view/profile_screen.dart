@@ -71,6 +71,15 @@ class _CustomerProfilePageState extends State<CustomerProfilePage> {
                     color: Colors.grey[600],
                   ),
                 ),
+                SizedBox(height: 20.0,),
+                Text(
+                  'OUR Details',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[800],
+                  ),
+                )
               ],
             ),
           ),
