@@ -1,45 +1,103 @@
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-//to commit
-class Profile extends StatelessWidget {
-  const Profile({super.key});
+class CharityProfilePage extends StatefulWidget {
+  @override
+  _CharityProfilePageState createState() => _CharityProfilePageState();
+}
 
+class _CharityProfilePageState extends State<CharityProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
-        title: Text('Profile', style: Theme.of(context).textTheme.displaySmall),
+        title: Text('Charity Profile'),
+        backgroundColor: Colors.green,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(0),
-          child: Column(
-            children: [
-              const SizedBox(
-                width: 120,
-                height: 120,
-                child: Icon(Icons.person_3_rounded),
+        child: Column(
+          children: <Widget>[
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: CircleAvatar(
+                  radius: 80.0,
+                  backgroundImage: AssetImage('assets/charity.jpg'),
+                ),
               ),
-              const SizedBox(height: 10),
-              Text('Name', style: Theme.of(context).textTheme.headlineMedium),
-              Text('Email', style: Theme.of(context).textTheme.bodySmall),
-              const SizedBox(height: 20),
-              SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.yellowAccent,
-                        side: BorderSide.none,
-                        shape: const StadiumBorder()),
-                    child: const Text('Edit Profile')),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  'Charity Name',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              // )
-            ],
-          ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  'Details about the Charity',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  'Contact Information',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  'Contact information here',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  'Donation Information',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Center(
+                child: Text(
+                  'Donation information here',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
