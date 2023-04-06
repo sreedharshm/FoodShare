@@ -12,6 +12,9 @@ class Profile1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        shadowColor: Colors.transparent,
+        toolbarHeight: 60,
         leading: IconButton(
             onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
       ),
@@ -20,16 +23,16 @@ class Profile1 extends StatelessWidget {
           children: [
             SizedBox(
               width: 120,
-              height: 120,
+              height: 30,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 //child: const Image(image: AssetImage('ProfileImage')),
               ),
             ),
             const SizedBox(height: 30),
-            Text('NAME',
+            Text('Albin Joseph',
                 style: Theme.of(context).textTheme.headlineMedium),
-            Text('Email',
+            Text('albinjoseph@gmail.com',
                 style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 20),
             SizedBox(
@@ -37,11 +40,12 @@ class Profile1 extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
+                    backgroundColor: tdBlue,
                     side: BorderSide.none,
+                    elevation: 0,
                     shape: const StadiumBorder()),
                 child: const Text('Edit Profile',
-                    style: TextStyle(color: tdBlack)),
+                    style: TextStyle(color: tdWhite)),
               ),
             ),
             const SizedBox(height: 30),
@@ -49,30 +53,30 @@ class Profile1 extends StatelessWidget {
             const SizedBox(height: 20),
             ProfileMenuWidget(
               title: 'Settings',
-              icon: LineAwesomeIcons.cog,
+              icon: Icons.settings,
               onPress: () {},
             ),
             ProfileMenuWidget(
               title: 'History',
-              icon: LineAwesomeIcons.history,
+              icon: Icons.history,
               onPress: () {},
             ),
             ProfileMenuWidget(
               title: 'App Details',
-              icon: LineAwesomeIcons.user_check,
+              icon: Icons.app_settings_alt,
               onPress: () {},
             ),
             ProfileMenuWidget(
               title: 'Help',
-              icon: LineAwesomeIcons.question,
+              icon: Icons.question_mark,
               onPress: () {},
             ),
             const Divider(color: Colors.grey),
             const SizedBox(height: 10),
             ProfileMenuWidget(
               title: 'Logout',
-              icon: LineAwesomeIcons.info,
-              textColor: Colors.red,
+              icon: Icons.logout,
+              textColor: tdBlack,
               onPress: () {},
             ),
             // ProfileMenuWidget(
@@ -81,7 +85,7 @@ class Profile1 extends StatelessWidget {
             //   textColor: Colors.red,
             //   endIcon: false,
             //   onPress: () {},
-           // ),
+            // ),
           ],
         ),
       ),
