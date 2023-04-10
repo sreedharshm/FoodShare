@@ -76,7 +76,7 @@ class Profile1 extends StatelessWidget {
             ProfileMenuWidget(
               title: 'Logout',
               icon: Icons.logout,
-              textColor: tdBlack,
+              textColor: tdRed,
               onPress: () {},
             ),
             // ProfileMenuWidget(
