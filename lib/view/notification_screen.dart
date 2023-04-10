@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Notificationscreen extends StatelessWidget {
   const Notificationscreen({super.key});
@@ -8,7 +9,17 @@ class Notificationscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        toolbarHeight: 60,
+        centerTitle: true,
+        titleTextStyle: GoogleFonts.montserrat(
+            color: const Color.fromARGB(255, 130, 130, 130),
+            fontSize: 20,
+            fontWeight: FontWeight.normal),
+        title: const Text("Notifications"),
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,28 +8,39 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        shadowColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+        toolbarHeight: 60,
+        centerTitle: true,
+        titleTextStyle: GoogleFonts.montserrat(
+            color: const Color.fromARGB(255, 130, 130, 130),
+            fontSize: 20,
+            fontWeight: FontWeight.normal),
+        title: const Text("Charities near you"),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black87,
-                    fontFamily: 'Schyler',
-                    fontWeight: FontWeight.w200),
-                "Charities near you"),
-                const Text(
-                  "Kottayam",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold
+            // const Text(
+            //     textAlign: TextAlign.start,
+            //     style: TextStyle(
+            //         fontSize: 20,
+            //         color: Colors.black87,
+            //         fontFamily: 'Schyler',
+            //         fontWeight: FontWeight.w200),
+            //     "Charities near you"),
 
-                  ),
-                ),
+            //ithu vene matiko
+            
+            const Text(
+              "Kottayam",
+              style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.normal),
+            ),
             ListView.builder(
                 physics: const ScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {

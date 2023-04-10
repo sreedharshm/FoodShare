@@ -96,23 +96,37 @@ class _MyAddPageState extends State<MyAddPage> {
               fontWeight: FontWeight.normal),
           title: const Text("Donate now"),
         ),
-        body: Stepper(
-          type: StepperType.horizontal,
-          steps: getSteps(),
-          currentStep: currentStep,
-          onStepContinue: () {
-            final isLastState = currentStep == getSteps().length - 1;
-            if (isLastState) {
-              print('completed');
-              //firebase stuff that sreedarsh will do :)
-            }
-            setState(() => currentStep += 1);
-          },
-          onStepTapped: (step) => setState(() {
-            currentStep = step;
-          }),
-          onStepCancel:
-              currentStep == 0 ? null : () => setState(() => currentStep -= 1),
+        body: Theme(
+          data: ThemeData(
+            colorScheme: const ColorScheme.light(primary: tdBlue),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                shape: MaterialStatePropertyAll(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ),
+            ),
+          ),
+          child: Stepper(
+            type: StepperType.horizontal,
+            steps: getSteps(),
+            currentStep: currentStep,
+            onStepContinue: () {
+              final isLastState = currentStep == getSteps().length - 1;
+              if (isLastState) {
+                print('completed');
+                //firebase stuff that sreedarsh will do :)
+              }
+              setState(() => currentStep += 1);
+            },
+            onStepTapped: (step) => setState(() {
+              currentStep = step;
+            }),
+            onStepCancel: currentStep == 0
+                ? null
+                : () => setState(() => currentStep -= 1),
+          ),
         ));
   }
 }
