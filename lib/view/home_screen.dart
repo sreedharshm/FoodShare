@@ -48,8 +48,11 @@ class HomeScreen extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      color: tdBGcolor,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.amber),
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      //color: Colors.orange,
                       child: Column(
                         children: [
                           const Expanded(
