@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'color.dart';
 
 int currentStep = 0;
+bool isCompleted = false;
 final itemName = TextEditingController();
 final itemQuantity = TextEditingController();
 final moreDescription = TextEditingController();
@@ -84,49 +85,61 @@ class MyAddPage extends StatefulWidget {
 class _MyAddPageState extends State<MyAddPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          shadowColor: Colors.transparent,
-          backgroundColor: Colors.transparent,
-          toolbarHeight: 60,
-          centerTitle: true,
-          titleTextStyle: GoogleFonts.montserrat(
-              color: const Color.fromARGB(255, 130, 130, 130),
-              fontSize: 20,
-              fontWeight: FontWeight.normal),
-          title: const Text("Donate now"),
-        ),
-        body: Theme(
-          data: ThemeData(
-            colorScheme: const ColorScheme.light(primary: tdBlue),
-            elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ButtonStyle(
-                shape: MaterialStatePropertyAll(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                ),
-              ),
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            shadowColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 60,
+            centerTitle: true,
+            titleTextStyle: GoogleFonts.montserrat(
+                color: const Color.fromARGB(255, 130, 130, 130),
+                fontSize: 20,
+                fontWeight: FontWeight.normal),
+            title: const Text("Donate now"),
+          ),
+          body: Theme(
+            data: ThemeData(
+              colorScheme: const ColorScheme.light(primary: tdBlue),
             ),
-          ),
-          child: Stepper(
-            type: StepperType.horizontal,
-            steps: getSteps(),
-            currentStep: currentStep,
-            onStepContinue: () {
-              final isLastState = currentStep == getSteps().length - 1;
-              if (isLastState) {
-                print('completed');
-                //firebase stuff that sreedarsh will do :)
-              }
-              setState(() => currentStep += 1);
-            },
-            onStepTapped: (step) => setState(() {
-              currentStep = step;
-            }),
-            onStepCancel: currentStep == 0
-                ? null
-                : () => setState(() => currentStep -= 1),
-          ),
-        ));
+            child: Stepper(
+              type: StepperType.horizontal,
+              steps: getSteps(),
+              currentStep: currentStep,
+              onStepContinue: () {
+                if (currentStep < (getSteps().length - 1)) {
+                  setState(() => currentStep += 1);
+                  setState(() {
+                    isCompleted = true;
+                  });
+                }
+              },
+              onStepTapped: (step) => setState(() {
+                currentStep = step;
+              }),
+              onStepCancel: currentStep == 0
+                  ? null
+                  : () => setState(() => currentStep -= 1),
+              // controlsBuilder:(BuildContext context, {VoidCallback? onStepContinue, VoidCallback? onStepCancell}) {
+              //   return Container(
+              //     child: Row(
+              //       children: [
+              //         Expanded(child: ElevatedButton(child: const Text("Next"), onPressed: onStepContinue,),
+              //         const SizedBox(width: 12),
+              //         Expanded(child: ElevatedButton(child: Text("Back"), onPressed: onStepCancel,),
+              //       ],
+              //     ),
+              //   ),
+              // },
+            ),
+          )),
+    );
   }
 }
