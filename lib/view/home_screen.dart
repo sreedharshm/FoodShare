@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
             //     "Charities near you"),
 
             //ithu vene matiko
-            
+
             const Text(
               "Kottayam",
               style: TextStyle(
@@ -70,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               trailing: ElevatedButton(
                                   onPressed: () {},
-                                  child: const Text("Continue")),
+                                  child: const Text("Donate")),
                             ),
                           )),
                         ],
