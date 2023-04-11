@@ -6,6 +6,7 @@ import 'package:foodproject/view/home_screen.dart';
 import 'package:foodproject/view/notification_screen.dart';
 import 'package:foodproject/view/profile_screen.dart';
 import 'package:foodproject/view/search_screen.dart';
+import 'color.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key});
@@ -43,7 +44,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         ),
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: const Color(0xFF284B63),
+        backgroundColor: tdBlue,
         onTap: onTap,
         currentIndex: value,
         selectedItemColor: Colors.white,

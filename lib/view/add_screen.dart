@@ -6,25 +6,51 @@ import 'package:google_fonts/google_fonts.dart';
 import 'color.dart';
 
 int currentStep = 0;
+final itemName = TextEditingController();
+final itemQuantity = TextEditingController();
+final moreDescription = TextEditingController();
+final selectCharity = TextEditingController();
+// final itemName = TextEditingController();
 List<Step> getSteps() => [
       Step(
+        state: currentStep > 0 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 0,
-        title: Text('Food item'),
-        content: Container(),
+        title: const Text('Select charity'),
+        content: Column(
+          children: <Widget>[
+            TextFormField(
+              controller: selectCharity,
+              // ignore: prefer_const_constructors
+              decoration: InputDecoration(labelText: "Select Charity"),
+            )
+          ],
+        ),
       ),
       Step(
+        state: currentStep > 1 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 1,
-        title: Text("Address"),
-        content: Container(),
+        title: const Text("Item details"),
+        content: Column(
+          children: <Widget>[
+            TextFormField(
+              controller: itemName,
+              decoration: InputDecoration(labelText: 'Item Name'),
+            ),
+            TextFormField(
+              controller: itemQuantity,
+              decoration: InputDecoration(labelText: "Quantity"),
+            ),
+            TextFormField(
+              controller: moreDescription,
+              decoration: InputDecoration(labelText: "Description"),
+            )
+          ],
+        ),
       ),
       Step(
+        state: currentStep > 2 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 2,
-        title: Text("Time"),
-        content: Container(),
-      ),
-      Step(
-        isActive: currentStep >= 3,
-        title: Text("Complete"),
+        title: const Text("Complete"),
         content: Container(),
       )
     ];
@@ -62,25 +88,45 @@ class _MyAddPageState extends State<MyAddPage> {
         appBar: AppBar(
           shadowColor: Colors.transparent,
           backgroundColor: Colors.transparent,
-          toolbarHeight: 5,
-          // centerTitle: true,
-          // titleTextStyle: GoogleFonts.montserrat(
-          //     color: const Color.fromARGB(255, 130, 130, 130),
-          //     fontSize: 20,
-          //     fontWeight: FontWeight.normal),
-          // title: const Text("Donate now"),
+          toolbarHeight: 60,
+          centerTitle: true,
+          titleTextStyle: GoogleFonts.montserrat(
+              color: const Color.fromARGB(255, 130, 130, 130),
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+          title: const Text("Donate now"),
         ),
-        body: Stepper(
-          type: StepperType.vertical,
-          steps: getSteps(),
-          currentStep: currentStep,
-          onStepContinue: () {
-            if (currentStep > 3) {
-              setState(() => currentStep = 0);
-            }
-            setState(() => currentStep += 1);
-          },
-          onStepCancel: () => setState(() => currentStep -= 1),
+        body: Theme(
+          data: ThemeData(
+            colorScheme: const ColorScheme.light(primary: tdBlue),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                shape: MaterialStatePropertyAll(
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ),
+            ),
+          ),
+          child: Stepper(
+            type: StepperType.horizontal,
+            steps: getSteps(),
+            currentStep: currentStep,
+            onStepContinue: () {
+              final isLastState = currentStep == getSteps().length - 1;
+              if (isLastState) {
+                print('completed');
+                //firebase stuff that sreedarsh will do :)
+              }
+              setState(() => currentStep += 1);
+            },
+            onStepTapped: (step) => setState(() {
+              currentStep = step;
+            }),
+            onStepCancel: currentStep == 0
+                ? null
+                : () => setState(() => currentStep -= 1),
+          ),
         ));
   }
 }
