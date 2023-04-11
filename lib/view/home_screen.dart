@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodproject/view/color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -47,11 +48,8 @@ class HomeScreen extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.amber),
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      //color: Colors.orange,
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      color: tdBGcolor,
                       child: Column(
                         children: [
                           const Expanded(
