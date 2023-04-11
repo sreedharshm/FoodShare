@@ -48,12 +48,15 @@ class HomeScreen extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      color: tdBGcolor,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.amber),
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      //color: Colors.orange,
                       child: Column(
                         children: [
                           const Expanded(
-                            flex: 3,
+                            flex: 5,
                             child: Image(
                               image: AssetImage("assets/images/google.png"),
                               color: Colors.amber,
@@ -61,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           Expanded(
                               child: Container(
-                            color: Colors.white,
+                            color: Colors.white70,
                             child: ListTile(
                               leading: IconButton(
                                   onPressed: () {},
