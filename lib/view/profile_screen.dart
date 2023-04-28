@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:foodproject/view/color.dart';
+import 'package:foodproject/view/profile_pages/about.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 //
@@ -61,9 +62,12 @@ class Profile1 extends StatelessWidget {
               onPress: () {},
             ),
             ProfileMenuWidget(
-              title: 'App Details',
+              title: 'About Us',
               icon: Icons.app_settings_alt,
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const About()));
+              },
             ),
             ProfileMenuWidget(
               title: 'Help',

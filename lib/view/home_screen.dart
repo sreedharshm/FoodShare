@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   color: tdBlue),
-                              height: MediaQuery.of(context).size.height * 0.6,
+                              height: MediaQuery.of(context).size.height * 0.4,
                               //color: Colors.orange,
                               child: Column(
                                 //mainAxisAlignment: MainAxisAlignment.center,
