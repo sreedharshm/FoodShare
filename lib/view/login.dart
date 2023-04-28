@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 300,
+                height: 250,
               ),
               TextFormField(
                 controller: _emailController,
