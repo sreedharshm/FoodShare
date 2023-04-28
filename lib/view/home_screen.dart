@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodproject/view/Donate.dart';
 import 'package:foodproject/view/color.dart';
 //import 'package:foodproject/view/color.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -92,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               style: GoogleFonts.montserrat(
                                                   color: Color.fromARGB(
                                                       255, 255, 255, 255),
-                                                  fontSize: 30,
+                                                  fontSize: 25,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           )
@@ -109,7 +110,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                         barRadius: const Radius.circular(12),
                                       ),
                                       trailing: ElevatedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const donatePage()),
+                                            );
+                                          },
                                           child: const Text("Donate")),
                                     ),
                                   )),

@@ -44,11 +44,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
           colors: [Color(0x0fe6e5ed), Color(0xfff4f0f4)],
         )),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 300,
+              height: 250,
+            ),
+            Text(
+              "Sign Up",
+              style: TextStyle(fontSize: 25),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            TextFormField(
+              //controller: _emailController,
+              decoration: const InputDecoration(
+                  filled: true,
+                  hintText: "Name",
+                  hintStyle: TextStyle(color: Color(0xffe6e5ed)),
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(12)))),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             TextFormField(
               controller: _emailController,
@@ -75,6 +96,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   border: OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.all(Radius.circular(12)))),
+            ),
+            SizedBox(
+              height: 30,
             ),
             ElevatedButton(
               onPressed: () {

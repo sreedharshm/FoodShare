@@ -26,13 +26,12 @@ class Profile1 extends StatelessWidget {
               height: 30,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                //child: const Image(image: AssetImage('ProfileImage')),
+                child: CircleAvatar(),
               ),
             ),
             const SizedBox(height: 30),
-            Text('Albin Joseph',
-                style: Theme.of(context).textTheme.headlineMedium),
-            Text('albinjoseph@gmail.com',
+            Text('Test', style: Theme.of(context).textTheme.headlineMedium),
+            Text('test@gmail.com',
                 style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 20),
             SizedBox(
