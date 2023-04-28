@@ -110,7 +110,6 @@ class _MyAddPageState extends State<MyAddPage> {
               colorScheme: const ColorScheme.light(primary: tdBlue),
             ),
             child: Stepper(
-              physics: ScrollPhysics(parent:),
               type: StepperType.horizontal,
               steps: getSteps(),
               currentStep: currentStep,
