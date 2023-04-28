@@ -79,10 +79,10 @@ class MyAddPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MyAddPageState createState() => _MyAddPageState();
+  MyAddPageState createState() => MyAddPageState();
 }
 
-class _MyAddPageState extends State<MyAddPage> {
+class MyAddPageState extends State<MyAddPage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -110,6 +110,7 @@ class _MyAddPageState extends State<MyAddPage> {
               colorScheme: const ColorScheme.light(primary: tdBlue),
             ),
             child: Stepper(
+              //physics: ScrollPhysics(),
               type: StepperType.horizontal,
               steps: getSteps(),
               currentStep: currentStep,

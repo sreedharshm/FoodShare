@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   animated_headline: ^1.2.0
+  cloud_firestore: ^4.5.3
   cupertino_icons: ^1.0.2
   dropdown_search: ^5.0.6
   firebase_auth: ^4.4.0

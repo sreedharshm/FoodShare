@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:foodproject/view/color.dart';
+//import 'package:foodproject/view/color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final CollectionReference orgDetails =
+      FirebaseFirestore.instance.collection('Organisations');
 
   @override
   Widget build(BuildContext context) {
@@ -42,49 +52,81 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.grey,
                   fontWeight: FontWeight.normal),
             ),
-            ListView.builder(
-                physics: const ScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: Colors.amber),
-                      height: MediaQuery.of(context).size.height * 0.6,
-                      //color: Colors.orange,
-                      child: Column(
-                        children: [
-                          const Expanded(
-                            flex: 5,
-                            child: Image(
-                              image: AssetImage("assets/images/google.png"),
-                              color: Colors.amber,
-                            ),
-                          ),
-                          Expanded(
-                              child: Container(
-                            color: Colors.white70,
-                            child: ListTile(
-                              leading: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.favorite)),
-                              title: LinearPercentIndicator(
-                                barRadius: const Radius.circular(12),
+            StreamBuilder(
+                stream: orgDetails.snapshots(),
+                builder: (context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                        physics: const ScrollPhysics(),
+                        itemBuilder: (BuildContext context, int index) {
+                          final DocumentSnapshot orgDetailsnap =
+                              snapshot.data.docs[index];
+                          String imageUrl = orgDetailsnap['image'];
+                          String orgName = orgDetailsnap['name'];
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: tdBlue),
+                              height: MediaQuery.of(context).size.height * 0.4,
+                              //color: Colors.orange,
+                              child: Column(
+                                //mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                      flex: 5,
+                                      child: Stack(
+                                        alignment:
+                                            AlignmentDirectional.bottomCenter,
+                                        fit: StackFit.expand,
+                                        children: [
+                                          Image(
+                                            image: NetworkImage(imageUrl),
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Container(
+                                            alignment: Alignment.bottomLeft,
+                                            child: Text(
+                                              orgName,
+                                              style: GoogleFonts.montserrat(
+                                                  color: Color.fromARGB(
+                                                      255, 255, 255, 255),
+                                                  fontSize: 30,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          )
+                                        ],
+                                      )),
+                                  Expanded(
+                                      child: Container(
+                                    color: Colors.white10,
+                                    child: ListTile(
+                                      leading: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(Icons.favorite)),
+                                      title: LinearPercentIndicator(
+                                        barRadius: const Radius.circular(12),
+                                      ),
+                                      trailing: ElevatedButton(
+                                          onPressed: () {},
+                                          child: const Text("Donate")),
+                                    ),
+                                  )),
+                                ],
                               ),
-                              trailing: ElevatedButton(
-                                  onPressed: () {},
-                                  child: const Text("Donate")),
                             ),
-                          )),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-                itemCount: 5,
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true),
+                          );
+                        },
+                        itemCount: snapshot.data!.docs.length,
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true);
+                  } else {
+                    return const Center(
+                      child: Text("Unable to Connect"),
+                    );
+                  }
+                }),
             const Text("Ends here")
           ],
         ),
