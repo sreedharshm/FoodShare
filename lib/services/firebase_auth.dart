@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 
 class FireAuth {
   static String s = "wrong";
@@ -28,5 +29,9 @@ class FireAuth {
       s = e.toString();
     }
     return s;
+  }
+
+  static Future logout() async {
+    await _firebaseAuth.signOut();
   }
 }

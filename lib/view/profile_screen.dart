@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:foodproject/services/firebase_auth.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/profile_pages/about.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import 'login.dart';
 
 //
 class Profile1 extends StatelessWidget {
@@ -80,7 +83,14 @@ class Profile1 extends StatelessWidget {
               title: 'Logout',
               icon: Icons.logout,
               textColor: tdRed,
-              onPress: () {},
+              onPress: () {
+                FireAuth.logout();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                    (Route<dynamic> route) => false);
+              },
             ),
             // ProfileMenuWidget(
             //   title: "Sign Out",
