@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:foodproject/services/firebase_auth.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/profile_pages/about.dart';
+import 'package:foodproject/view/profile_pages/help.dart';
+import 'package:foodproject/view/profile_pages/history.dart';
+import 'package:foodproject/view/profile_pages/settings.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import 'login.dart';
@@ -56,12 +59,18 @@ class Profile1 extends StatelessWidget {
             ProfileMenuWidget(
               title: 'Settings',
               icon: Icons.settings,
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SettingsScreen()));
+              },
             ),
             ProfileMenuWidget(
               title: 'History',
               icon: Icons.history,
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const HistoryScreen()));
+              },
             ),
             ProfileMenuWidget(
               title: 'About Us',
@@ -74,7 +83,10 @@ class Profile1 extends StatelessWidget {
             ProfileMenuWidget(
               title: 'Help',
               icon: Icons.question_mark,
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const HelpScreen()));
+              },
             ),
             const Divider(color: Colors.grey),
             const SizedBox(height: 10),
