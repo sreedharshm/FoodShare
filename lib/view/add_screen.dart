@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:foodproject/main.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'color.dart';
 
@@ -35,15 +33,15 @@ List<Step> getSteps() => [
           children: <Widget>[
             TextFormField(
               controller: itemName,
-              decoration: InputDecoration(labelText: 'Item Name'),
+              decoration: const InputDecoration(labelText: 'Item Name'),
             ),
             TextFormField(
               controller: itemQuantity,
-              decoration: InputDecoration(labelText: "Quantity"),
+              decoration: const InputDecoration(labelText: "Quantity"),
             ),
             TextFormField(
               controller: moreDescription,
-              decoration: InputDecoration(labelText: "Description"),
+              decoration: const InputDecoration(labelText: "Description"),
             )
           ],
         ),
@@ -57,6 +55,8 @@ List<Step> getSteps() => [
     ];
 
 class Add extends StatelessWidget {
+  const Add({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

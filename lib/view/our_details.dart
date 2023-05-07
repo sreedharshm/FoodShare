@@ -5,48 +5,48 @@ class OurProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Charity Profile'),
+        title: const Text('Charity Profile'),
       ),
       body: Column(
         children: [
           Container(
             height: 200,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/user.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             'Charity Name',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 10),
-          Text(
+          const SizedBox(height: 10),
+          const Text(
             'Mission Statement: ',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
-          Text(
+          const Text(
             'Charity mission statement goes here',
             style: TextStyle(
               fontSize: 16,
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
-                children: [
+                children: const [
                   Text(
                     'Total Donations',
                     style: TextStyle(
@@ -64,7 +64,7 @@ class OurProfile extends StatelessWidget {
                 ],
               ),
               Column(
-                children: [
+                children: const [
                   Text(
                     'Number of Donors',
                     style: TextStyle(

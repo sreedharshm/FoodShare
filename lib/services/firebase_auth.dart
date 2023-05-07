@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class FireAuth {
   static String s = "wrong";
@@ -8,7 +8,7 @@ class FireAuth {
       {required String emailController,
       required String passwordController}) async {
     try {
-      final credential = await _firebaseAuth.signInWithEmailAndPassword(
+      await _firebaseAuth.signInWithEmailAndPassword(
           email: emailController, password: passwordController);
       s = "success";
     } on FirebaseAuthException catch (e) {
@@ -21,14 +21,25 @@ class FireAuth {
       {required String emailController,
       required String passwordController}) async {
     try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailController, password: passwordController);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailController, password: passwordController);
       s = "success";
     } on FirebaseAuthException catch (e) {
       s = e.toString();
     }
     return s;
+  }
+
+  static Future sendEmail({required String email, context}) async {
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Email send")));
+    } on FirebaseAuthException catch (e) {
+      String? err = e.message;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Email not send $err")));
+    }
   }
 
   static Future logout() async {

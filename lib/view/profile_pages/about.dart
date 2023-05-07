@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:foodproject/main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class About extends StatelessWidget {
@@ -21,7 +18,6 @@ class About extends StatelessWidget {
             fontWeight: FontWeight.normal),
         title: const Text("About Us"),
       ),
-      
     );
   }
 }

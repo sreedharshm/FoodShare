@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:foodproject/services/firebase_auth.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/profile_pages/about.dart';
@@ -30,7 +29,7 @@ class Profile1 extends StatelessWidget {
               height: 30,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: CircleAvatar(),
+                child: const CircleAvatar(),
               ),
             ),
             const SizedBox(height: 30),
@@ -133,7 +132,7 @@ class ProfileMenuWidget extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          color: Color.fromARGB(255, 0, 4, 3),
+          color: const Color.fromARGB(255, 0, 4, 3),
         ),
       ),
       title: Text(title, style: TextStyle(color: textColor)),

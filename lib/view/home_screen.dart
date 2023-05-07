@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Text(
                                               orgName,
                                               style: GoogleFonts.montserrat(
-                                                  color: Color.fromARGB(
+                                                  color: const Color.fromARGB(
                                                       255, 255, 255, 255),
                                                   fontSize: 25,
                                                   fontWeight: FontWeight.bold),
