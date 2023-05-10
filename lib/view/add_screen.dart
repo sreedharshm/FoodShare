@@ -67,7 +67,7 @@ class Add extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: const MyAddPage(title: 'Flutter Demo Home Page'),
     );
