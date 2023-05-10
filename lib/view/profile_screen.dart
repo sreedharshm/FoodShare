@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:foodproject/services/firebase_auth.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/profile_pages/about.dart';
+import 'package:foodproject/view/profile_pages/editprofile.dart';
 import 'package:foodproject/view/profile_pages/help.dart';
 import 'package:foodproject/view/profile_pages/history.dart';
 import 'package:foodproject/view/profile_pages/settings.dart';
@@ -21,8 +22,6 @@ class Profile1 extends StatelessWidget {
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
         toolbarHeight: 60,
-        leading: IconButton(
-            onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -43,7 +42,10 @@ class Profile1 extends StatelessWidget {
             SizedBox(
               width: 200,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> edit_profile())
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: tdBlue,
                     side: BorderSide.none,
