@@ -5,12 +5,13 @@ class GoogleSignInClass {
   static googleSigniN() async {
     try {
       final GoogleSignInAccount? user = await GoogleSignIn().signIn();
+
       final GoogleSignInAuthentication userauth = await user!.authentication;
       final credential = GoogleAuthProvider.credential(
           idToken: userauth.accessToken, accessToken: userauth.accessToken);
       return await FirebaseAuth.instance.signInWithCredential(credential);
-    } on FirebaseAuthException catch (e) {
-      print(e);
-    } catch (e) {}
+    } catch (e) {
+      print("error");
+    }
   }
 }
