@@ -16,7 +16,7 @@ class HistoryScreen extends StatelessWidget {
             color: const Color.fromARGB(255, 130, 130, 130),
             fontSize: 20,
             fontWeight: FontWeight.normal),
-        title: const Text("About Us"),
+        title: const Text("History"),
       ),
     );
   }

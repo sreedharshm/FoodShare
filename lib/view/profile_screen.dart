@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:foodproject/services/firebase_auth.dart';
-import 'package:foodproject/view/about_us.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/profile_pages/about.dart';
 import 'package:foodproject/view/profile_pages/help.dart';
@@ -78,7 +77,7 @@ class Profile1 extends StatelessWidget {
               icon: Icons.app_settings_alt,
               onPress: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) =>  About_us()));
+                    MaterialPageRoute(builder: (context) =>  About()));
               },
             ),
             ProfileMenuWidget(
