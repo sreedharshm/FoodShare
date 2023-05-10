@@ -26,9 +26,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
   final screen = [
     const HomeScreen(),
     const Search(),
-    Add(),
+    const Add(),
     const Notificationscreen(),
-    Profile1()
+    const Profile1()
   ];
 
   @override
@@ -48,7 +48,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         onTap: onTap,
         currentIndex: value,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Color.fromARGB(255, 139, 163, 178),
+        unselectedItemColor: const Color.fromARGB(255, 139, 163, 178),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(

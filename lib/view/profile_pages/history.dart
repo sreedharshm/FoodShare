@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Notificationscreen extends StatelessWidget {
-  const Notificationscreen({super.key});
+class HistoryScreen extends StatelessWidget {
+  const HistoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class Notificationscreen extends StatelessWidget {
             color: const Color.fromARGB(255, 130, 130, 130),
             fontSize: 20,
             fontWeight: FontWeight.normal),
-        title: const Text("Notifications"),
+        title: const Text("History"),
       ),
     );
   }

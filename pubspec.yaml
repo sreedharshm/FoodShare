@@ -37,6 +37,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^4.0.3
+  google_sign_in: ^6.1.0
   line_awesome_flutter: ^2.0.0
   percent_indicator: ^4.2.3
 

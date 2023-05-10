@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
+import 'package:foodproject/services/firebase_auth.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/profile_pages/about.dart';
+import 'package:foodproject/view/profile_pages/editprofile.dart';
+import 'package:foodproject/view/profile_pages/help.dart';
+import 'package:foodproject/view/profile_pages/history.dart';
+import 'package:foodproject/view/profile_pages/settings.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import 'login.dart';
 
 //
 class Profile1 extends StatelessWidget {
@@ -16,8 +22,6 @@ class Profile1 extends StatelessWidget {
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
         toolbarHeight: 60,
-        leading: IconButton(
-            onPressed: () {}, icon: const Icon(LineAwesomeIcons.angle_left)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -27,19 +31,21 @@ class Profile1 extends StatelessWidget {
               height: 30,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                //child: const Image(image: AssetImage('ProfileImage')),
+                child: const CircleAvatar(),
               ),
             ),
             const SizedBox(height: 30),
-            Text('Albin Joseph',
-                style: Theme.of(context).textTheme.headlineMedium),
-            Text('albinjoseph@gmail.com',
+            Text('Test', style: Theme.of(context).textTheme.headlineMedium),
+            Text('test@gmail.com',
                 style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 20),
             SizedBox(
               width: 200,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> edit_profile())
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: tdBlue,
                     side: BorderSide.none,
@@ -55,25 +61,34 @@ class Profile1 extends StatelessWidget {
             ProfileMenuWidget(
               title: 'Settings',
               icon: Icons.settings,
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SettingsScreen()));
+              },
             ),
             ProfileMenuWidget(
               title: 'History',
               icon: Icons.history,
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const HistoryScreen()));
+              },
             ),
             ProfileMenuWidget(
               title: 'About Us',
               icon: Icons.app_settings_alt,
               onPress: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const About()));
+                    MaterialPageRoute(builder: (context) =>  About()));
               },
             ),
             ProfileMenuWidget(
               title: 'Help',
               icon: Icons.question_mark,
-              onPress: () {},
+              onPress: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const HelpScreen()));
+              },
             ),
             const Divider(color: Colors.grey),
             const SizedBox(height: 10),
@@ -81,15 +96,15 @@ class Profile1 extends StatelessWidget {
               title: 'Logout',
               icon: Icons.logout,
               textColor: tdRed,
-              onPress: () {},
+              onPress: () {
+                FireAuth.logout();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()),
+                    (Route<dynamic> route) => false);
+              },
             ),
-            // ProfileMenuWidget(
-            //   title: "Sign Out",
-            //   icon: LineAwesomeIcons.alternate_sign_out,
-            //   textColor: Colors.red,
-            //   endIcon: false,
-            //   onPress: () {},
-            // ),
           ],
         ),
       ),
@@ -124,7 +139,7 @@ class ProfileMenuWidget extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          color: Color.fromARGB(255, 0, 4, 3),
+          color: const Color.fromARGB(255, 0, 4, 3),
         ),
       ),
       title: Text(title, style: TextStyle(color: textColor)),

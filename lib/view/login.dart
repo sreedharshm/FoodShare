@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodproject/services/googlesignin.dart';
 import 'package:foodproject/view/Navigation.dart';
+import 'package:foodproject/view/loginlogout/resetpassword.dart';
 
 import 'package:foodproject/view/signup.dart';
 
@@ -21,6 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   bool _isloading = false;
   loginhere() async {
+    setState(() {
+      _isloading = true;
+    });
     String s = await FireAuth.signIn(
         emailController: _emailController.text.trim(),
         passwordController: _passwordController.text.trim());
@@ -33,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         _isloading = false;
       });
-      print(s);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(s)));
     }
   }
 
@@ -86,7 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ResetPassword()));
+                      },
                       child: const Text(
                         "Forgot Password?",
                         style: TextStyle(color: Colors.grey),
@@ -141,7 +151,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoogleSignInClass.googleSigniN();
+                    },
                     icon: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
