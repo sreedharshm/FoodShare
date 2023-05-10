@@ -15,42 +15,46 @@ List<Step> getSteps() => [
         state: currentStep > 0 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 0,
         title: const Text('Select charity'),
-        content: Column(
-          children: <Widget>[
-            TextFormField(
-              controller: selectCharity,
-              // ignore: prefer_const_constructors
-              decoration: InputDecoration(labelText: "Select Charity"),
-            )
-          ],
+        content: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                controller: selectCharity,
+                // ignore: prefer_const_constructors
+                decoration: InputDecoration(labelText: "Select Charity"),
+              )
+            ],
+          ),
         ),
       ),
       Step(
         state: currentStep > 1 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 1,
         title: const Text("Item details"),
-        content: Column(
-          children: <Widget>[
-            TextFormField(
-              controller: itemName,
-              decoration: const InputDecoration(labelText: 'Item Name'),
-            ),
-            TextFormField(
-              controller: itemQuantity,
-              decoration: const InputDecoration(labelText: "Quantity"),
-            ),
-            TextFormField(
-              controller: moreDescription,
-              decoration: const InputDecoration(labelText: "Description"),
-            )
-          ],
+        content: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                controller: itemName,
+                decoration: const InputDecoration(labelText: 'Item Name'),
+              ),
+              TextFormField(
+                controller: itemQuantity,
+                decoration: const InputDecoration(labelText: "Quantity"),
+              ),
+              TextFormField(
+                controller: moreDescription,
+                decoration: const InputDecoration(labelText: "Description"),
+              )
+            ],
+          ),
         ),
       ),
       Step(
         state: currentStep > 2 ? StepState.complete : StepState.indexed,
         isActive: currentStep >= 2,
         title: const Text("Complete"),
-        content: Container(),
+        content: SingleChildScrollView(child: Container()),
       )
     ];
 
@@ -110,7 +114,8 @@ class MyAddPageState extends State<MyAddPage> {
               colorScheme: const ColorScheme.light(primary: tdBlue),
             ),
             child: Stepper(
-              //physics: ScrollPhysics(),
+              //physics: const ScrollPhysics(),
+
               type: StepperType.horizontal,
               steps: getSteps(),
               currentStep: currentStep,

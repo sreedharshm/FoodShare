@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodproject/services/googlesignin.dart';
 import 'package:foodproject/view/Navigation.dart';
 import 'package:foodproject/view/loginlogout/resetpassword.dart';
 
@@ -150,7 +151,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoogleSignInClass.googleSigniN();
+                    },
                     icon: Container(
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
