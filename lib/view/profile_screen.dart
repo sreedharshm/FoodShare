@@ -103,13 +103,6 @@ class Profile1 extends StatelessWidget {
                     (Route<dynamic> route) => false);
               },
             ),
-            // ProfileMenuWidget(
-            //   title: "Sign Out",
-            //   icon: LineAwesomeIcons.alternate_sign_out,
-            //   textColor: Colors.red,
-            //   endIcon: false,
-            //   onPress: () {},
-            // ),
           ],
         ),
       ),
