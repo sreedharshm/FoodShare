@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class OurProfile extends StatelessWidget {
+class About_us extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Charity Profile'),
+        title: const Text('About Us'),
       ),
       body: Column(
         children: [
@@ -15,7 +16,7 @@ class OurProfile extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/user.png'),
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
           ),
@@ -82,6 +83,10 @@ class OurProfile extends StatelessWidget {
                 ],
               ),
             ],
+          ),
+          Container(height: 50,width:MediaQuery.of(context).size.width,
+          alignment: Alignment.center,
+            child:Text('saurav suresh',style: GoogleFonts.montserrat(fontSize: 25)),
           ),
         ],
       ),
