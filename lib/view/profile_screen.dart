@@ -43,7 +43,7 @@ class Profile1 extends StatelessWidget {
               width: 200,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> edit_profile())
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const edit_profile())
                   );
                 },
                 style: ElevatedButton.styleFrom(
@@ -79,7 +79,7 @@ class Profile1 extends StatelessWidget {
               icon: Icons.app_settings_alt,
               onPress: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) =>  About()));
+                    MaterialPageRoute(builder: (context) =>  const About()));
               },
             ),
             ProfileMenuWidget(
