@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor:
-              _isAppBarTransparent ? Colors.transparent : tdBGcolor,
+               tdBGcolor,
           elevation: 0,
           toolbarHeight: 60,
           centerTitle: true,
