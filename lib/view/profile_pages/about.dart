@@ -53,7 +53,7 @@ class About extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          const Row(
+             Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
