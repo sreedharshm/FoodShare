@@ -50,6 +50,16 @@ class edit_profileState extends State<edit_profile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Container(
+            height: 200,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/user.png'),
+                fit: BoxFit.contain,
+              ),
+            ),
+          ),
               TextField(
                 controller: _nameController,
                 decoration: const InputDecoration(
