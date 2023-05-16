@@ -100,7 +100,7 @@ class MyAddPageState extends State<MyAddPage> {
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
             shadowColor: Colors.transparent,
-            backgroundColor: Colors.transparent,
+            backgroundColor: tdBGcolor,
             toolbarHeight: 60,
             centerTitle: true,
             titleTextStyle: GoogleFonts.montserrat(
@@ -116,7 +116,7 @@ class MyAddPageState extends State<MyAddPage> {
             child: OverflowBox(
               child: Stepper(
                 //physics: const ScrollPhysics(),
-            
+
                 type: StepperType.horizontal,
                 steps: getSteps(),
                 currentStep: currentStep,

@@ -1,7 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:foodproject/services/firebase_auth.dart';
+import 'package:foodproject/view/color.dart';
+import 'package:foodproject/view/home_screen.dart';
 import 'package:foodproject/view/login.dart';
 import 'package:flutter/src/services/system_chrome.dart';
+import 'package:foodproject/view/navigation.dart';
+
 //import 'package:foodproject/view/login.dart';
 
 import 'firebase_options.dart';
@@ -9,6 +14,7 @@ import 'firebase_options.dart';
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
       systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
@@ -40,7 +46,15 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.grey,
       ),
-      home: const LoginScreen(),
+      home: StreamBuilder(
+          stream: FireAuth().firebaseAuth.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return NavigationScreen();
+            } else {
+              return LoginScreen();
+            }
+          }),
       debugShowCheckedModeBanner: false,
     );
   }

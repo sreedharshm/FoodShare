@@ -9,7 +9,7 @@ class About extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color.fromARGB(255, 224, 224, 224),
         toolbarHeight: 60,
         centerTitle: true,
         titleTextStyle: GoogleFonts.montserrat(
@@ -18,7 +18,7 @@ class About extends StatelessWidget {
             fontWeight: FontWeight.normal),
         title: const Text("About Us"),
       ),
-       body: Column(
+      body: Column(
         children: [
           Container(
             height: 200,
@@ -53,7 +53,7 @@ class About extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-             Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
@@ -94,9 +94,12 @@ class About extends StatelessWidget {
               ),
             ],
           ),
-          Container(height: 50,width:MediaQuery.of(context).size.width,
-          alignment: Alignment.center,
-            child:Text('saurav suresh',style: GoogleFonts.montserrat(fontSize: 25)),
+          Container(
+            height: 50,
+            width: MediaQuery.of(context).size.width,
+            alignment: Alignment.center,
+            child: Text('saurav suresh',
+                style: GoogleFonts.montserrat(fontSize: 25)),
           ),
         ],
       ),

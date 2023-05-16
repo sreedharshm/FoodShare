@@ -21,7 +21,7 @@ class Profile1 extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         shadowColor: Colors.transparent,
-        toolbarHeight: 60,
+        toolbarHeight: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -42,18 +42,21 @@ class Profile1 extends StatelessWidget {
             SizedBox(
               width: 200,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>   EditProfilePage())
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: tdBlue,
-                    side: BorderSide.none,
-                    elevation: 0,
-                    shape: const StadiumBorder()),
-                child: const Text('Edit Profile',
-                    style: TextStyle(color: tdWhite)),
-              ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EditProfilePage()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: tdBlue,
+                      side: BorderSide.none,
+                      shape: const StadiumBorder()),
+                  child: const Column(
+                    children: [
+                      Text('Edit Profile', style: TextStyle(color: tdWhite)),
+                    ],
+                  )),
             ),
             const SizedBox(height: 30),
             const Divider(),
@@ -79,7 +82,7 @@ class Profile1 extends StatelessWidget {
               icon: Icons.app_settings_alt,
               onPress: () {
                 Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) =>  const About()));
+                    MaterialPageRoute(builder: (context) => const About()));
               },
             ),
             ProfileMenuWidget(
@@ -97,7 +100,7 @@ class Profile1 extends StatelessWidget {
               icon: Icons.logout,
               textColor: tdRed,
               onPress: () {
-                FireAuth.logout();
+                FireAuth().logout();
                 Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class FireAuth {
   static String s = "wrong";
-  static final _firebaseAuth = FirebaseAuth.instance;
-  static Future<String> signIn(
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  Future<String> signIn(
       {required String emailController,
       required String passwordController}) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      await firebaseAuth.signInWithEmailAndPassword(
           email: emailController, password: passwordController);
       s = "success";
     } on FirebaseAuthException catch (e) {
@@ -17,7 +17,7 @@ class FireAuth {
     return s;
   }
 
-  static Future<String> signUp(
+  Future<String> signUp(
       {required String emailController,
       required String passwordController}) async {
     try {
@@ -30,9 +30,9 @@ class FireAuth {
     return s;
   }
 
-  static Future sendEmail({required String email, context}) async {
+  Future sendEmail({required String email, context}) async {
     try {
-      await _firebaseAuth.sendPasswordResetEmail(email: email);
+      await firebaseAuth.sendPasswordResetEmail(email: email);
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text("Email send")));
     } on FirebaseAuthException catch (e) {
@@ -42,7 +42,7 @@ class FireAuth {
     }
   }
 
-  static Future logout() async {
-    await _firebaseAuth.signOut();
+  Future logout() async {
+    await firebaseAuth.signOut();
   }
 }

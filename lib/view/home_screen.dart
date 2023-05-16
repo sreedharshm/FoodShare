@@ -51,8 +51,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor:
-               tdBGcolor,
+          backgroundColor: tdBGcolor,
+          shadowColor: Colors.transparent,
           elevation: 0,
           toolbarHeight: 60,
           centerTitle: true,
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: const Color.fromARGB(255, 130, 130, 130),
               fontSize: 20,
               fontWeight: FontWeight.normal),
-          title: Text("Charities near you"),
+          title: const Text("Charities near you"),
         ),
         body: SingleChildScrollView(
           controller: _scrollController,
@@ -173,7 +173,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       return const Center(child: CircularProgressIndicator());
                     }
                   }),
-              const Text("Ends here")
             ],
           ),
         ),

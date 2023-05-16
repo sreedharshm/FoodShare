@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:foodproject/view/color.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SettingsUI extends StatelessWidget {
   @override
@@ -23,27 +24,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        elevation: 1,
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Color.fromARGB(255, 2, 2, 2),
+            color: tdBlack,
           ),
           onPressed: () {},
         ),
-        // actions: [
-        //   IconButton(
-        //     icon: Icon(
-        //       Icons.settings,
-        //       color: Colors.green,
-        //     ),
-        //     onPressed: () {
-        //       Navigator.of(context).push(MaterialPageRoute(
-        //           builder: (BuildContext context) => EditProfilePage()));
-        //     },
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: tdBlack,
+            ),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => EditProfilePage()));
+            },
+          ),
+        ],
       ),
       body: Container(
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
@@ -55,9 +56,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
             children: [
               Text(
                 "Edit Profile",
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+                style: GoogleFonts.lato(
+                  fontSize: 25,
+                ),
+                textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Center(
@@ -72,17 +76,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                               color: Theme.of(context).scaffoldBackgroundColor),
                           boxShadow: [
                             BoxShadow(
-                                spreadRadius: 2,
-                                blurRadius: 10,
-                                color: Colors.black.withOpacity(0.1),
-                                offset: Offset(0, 10))
+                                spreadRadius: 100,
+                                blurRadius: 100,
+                                color: tdBlue.withOpacity(0.1),
+                                offset: Offset(0, 0))
                           ],
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage(
-                                "https://cdn-icons-png.flaticon.com/128/64/64572.png",
-                              ))),
+                                "https://www.tenforums.com/attachments/user-accounts-family-safety/322690d1615743307t-user-account-image-log-user.png",
+                              ),),),
                     ),
                     Positioned(
                         bottom: 0,
@@ -91,14 +95,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           height: 40,
                           width: 40,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              width: 4,
-                              color: Theme.of(context).scaffoldBackgroundColor,
-                            ),
-                            color: Colors.green,
-                          ),
-                          child: Icon(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                width: 4,
+                                color:
+                                    Theme.of(context).scaffoldBackgroundColor,
+                              ),
+                              color: tdBlue),
+                          child: const Icon(
                             Icons.edit,
                             color: Colors.white,
                           ),
@@ -106,14 +110,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               buildTextField("Full Name", "example", false),
               buildTextField("E-mail", "example@gmail.com", false),
               buildTextField("Password", "********", true),
               buildTextField("Location", "EG, Example", false),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               Row(
@@ -121,34 +125,28 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 children: [
                   OutlinedButton(
                     onPressed: () {},
-                     style: OutlinedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
+                    style: OutlinedButton.styleFrom(
+                      fixedSize: Size(175, 50),
+                      padding: const EdgeInsets.symmetric(horizontal: 50),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
+                          borderRadius: BorderRadius.circular(15)),
                     ),
                     //onPressed: () {},
-                    child: Text("CANCEL",
-                        style: TextStyle(
-                            fontSize: 14,
-                            letterSpacing: 2.2,
-                            color: Colors.black)),
+                    child: const Text("CANCEL",
+                        style: TextStyle(fontSize: 14, color: Colors.black)),
                   ),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                      )
-                    ),
-                    child: Text(
+                        fixedSize: Size(175, 50),
+                        backgroundColor: tdBlue,
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15))),
+                    child: const Text(
                       "SAVE",
-                      style: TextStyle(
-                          fontSize: 14,
-                          letterSpacing: 2.2,
-                          color: Colors.white),
+                      style: TextStyle(fontSize: 14, color: Colors.white),
                     ),
                   )
                 ],
@@ -174,17 +172,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         showPassword = !showPassword;
                       });
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.remove_red_eye,
                       color: Colors.grey,
                     ),
                   )
                 : null,
-            contentPadding: EdgeInsets.only(bottom: 3),
+            contentPadding: const EdgeInsets.only(bottom: 3),
             labelText: labelText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: placeholder,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.black,

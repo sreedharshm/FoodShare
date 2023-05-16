@@ -16,7 +16,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool _isloading = false;
   signuphere() async {
     _isloading = true;
-    String s = await FireAuth.signUp(
+    String s = await FireAuth().signUp(
         emailController: _emailController.text.trim(),
         passwordController: _passwordController.text.trim());
     if (s == "success") {

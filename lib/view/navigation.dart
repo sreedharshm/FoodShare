@@ -37,22 +37,25 @@ class _NavigationScreenState extends State<NavigationScreen> {
       body: screen[value],
       bottomNavigationBar: BottomNavigationBar(
         selectedIconTheme: const IconThemeData(
-          size: 25,
+          size: 35,
         ),
         unselectedIconTheme: const IconThemeData(
-          size: 25,
+          size: 30,
         ),
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: tdBlue,
+        backgroundColor: tdWhite,
+        elevation: 10,
         onTap: onTap,
         currentIndex: value,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: const Color.fromARGB(255, 139, 163, 178),
+        selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+        unselectedItemColor: Color.fromARGB(255, 180, 180, 180),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-              activeIcon: Icon(Icons.home),
+              activeIcon: Icon(
+                Icons.home,
+              ),
               icon: Icon(Icons.home_outlined),
               label: "Home"),
           BottomNavigationBarItem(
@@ -62,8 +65,12 @@ class _NavigationScreenState extends State<NavigationScreen> {
               icon: Icon(Icons.search_outlined),
               label: "Search"),
           BottomNavigationBarItem(
-              activeIcon: Icon(Icons.add_box_rounded),
-              icon: Icon(Icons.add_box_outlined),
+              activeIcon: Icon(
+                Icons.add_box_rounded,
+              ),
+              icon: Icon(
+                Icons.add_box_outlined,
+              ),
               label: "Add"),
           BottomNavigationBarItem(
               activeIcon: Icon(Icons.notifications_active),

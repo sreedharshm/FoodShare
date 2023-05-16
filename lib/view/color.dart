@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 // ye use karo bhai
 const Color tdRed = Color(0xFFDA4040);
-const Color tdBlue = Color(0xFF284B63);
+const Color tdBlue = Color.fromARGB(255, 17, 125, 197);
 
 const Color tdBlack = Color(0xFF3A3A3A);
+const Color tdGrey = Color.fromARGB(255, 161, 161, 161);
 
 const Color tdWhite = Color.fromARGB(255, 255, 255, 255);
-const Color tdBGcolor = Color.fromARGB(255, 233, 233, 233);
+const Color tdBGcolor = Color.fromARGB(255, 243, 243, 243);
 
 const MaterialColor primary = MaterialColor(_primaryPrimaryValue, <int, Color>{
   50: Color(0xFFFFFFFF),

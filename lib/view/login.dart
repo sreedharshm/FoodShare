@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isloading = true;
     });
-    String s = await FireAuth.signIn(
+    String s = await FireAuth().signIn(
         emailController: _emailController.text.trim(),
         passwordController: _passwordController.text.trim());
     if (s == "success") {
@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 50,
               ),
-                 Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(

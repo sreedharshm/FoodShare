@@ -49,8 +49,8 @@ class _ResetPasswordState extends State<ResetPassword> {
               setState(() {
                 _isloading = true;
               });
-              FireAuth.sendEmail(
-                  email: resetemail.text.trim(), context: context);
+              FireAuth()
+                  .sendEmail(email: resetemail.text.trim(), context: context);
               setState(() {
                 _isloading = false;
               });
