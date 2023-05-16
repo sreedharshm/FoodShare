@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:foodproject/view/Donate.dart';
 import 'package:foodproject/view/color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key});
+  const HomeScreen({
+    super.key,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor:
-              _isAppBarTransparent ? Colors.transparent : tdBGcolor,
+               tdBGcolor,
           elevation: 0,
           toolbarHeight: 60,
           centerTitle: true,
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     textAlign: TextAlign.right,
                     style: GoogleFonts.montserrat(
                       fontSize: 15,
-                      color: Color.fromARGB(255, 206, 206, 206),
+                      color: const Color.fromARGB(255, 206, 206, 206),
                     ),
                   ),
                 ],
@@ -90,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 snapshot.data.docs[index];
                             String imageUrl = orgDetailsnap['image'];
                             String orgName = orgDetailsnap['name'];
-                            String acc_image = orgDetailsnap["acc_image"];
+                            String accImage = orgDetailsnap["acc_image"];
                             return Padding(
                               padding: const EdgeInsets.all(20),
                               child: Container(
@@ -127,16 +128,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                               ),
                                             ),
-                                            // CircleAvatar(
-                                            //   radius: 20,
-                                            //   backgroundColor: tdBGcolor,
-                                            //   backgroundImage:
-                                            //       NetworkImage(acc_image),
-                                            // ),
-                                            Container(
-                                              alignment:
-                                                  const Alignment(-0.7, -0.9),
-                                              child: Text(
+                                            ListTile(
+                                              leading: CircleAvatar(
+                                                radius: 20,
+                                                backgroundColor: tdBGcolor,
+                                                backgroundImage:
+                                                    NetworkImage(accImage),
+                                              ),
+                                              title: Text(
                                                 orgName,
                                                 style: GoogleFonts.openSans(
                                                     color: tdWhite,

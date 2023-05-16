@@ -113,37 +113,39 @@ class MyAddPageState extends State<MyAddPage> {
             data: ThemeData(
               colorScheme: const ColorScheme.light(primary: tdBlue),
             ),
-            child: Stepper(
-              //physics: const ScrollPhysics(),
-
-              type: StepperType.horizontal,
-              steps: getSteps(),
-              currentStep: currentStep,
-              onStepContinue: () {
-                if (currentStep < (getSteps().length - 1)) {
-                  setState(() => currentStep += 1);
-                  setState(() {
-                    isCompleted = true;
-                  });
-                }
-              },
-              onStepTapped: (step) => setState(() {
-                currentStep = step;
-              }),
-              onStepCancel: currentStep == 0
-                  ? null
-                  : () => setState(() => currentStep -= 1),
-              // controlsBuilder:(BuildContext context, {VoidCallback? onStepContinue, VoidCallback? onStepCancell}) {
-              //   return Container(
-              //     child: Row(
-              //       children: [
-              //         Expanded(child: ElevatedButton(child: const Text("Next"), onPressed: onStepContinue,),
-              //         const SizedBox(width: 12),
-              //         Expanded(child: ElevatedButton(child: Text("Back"), onPressed: onStepCancel,),
-              //       ],
-              //     ),
-              //   ),
-              // },
+            child: OverflowBox(
+              child: Stepper(
+                //physics: const ScrollPhysics(),
+            
+                type: StepperType.horizontal,
+                steps: getSteps(),
+                currentStep: currentStep,
+                onStepContinue: () {
+                  if (currentStep < (getSteps().length - 1)) {
+                    setState(() => currentStep += 1);
+                    setState(() {
+                      isCompleted = true;
+                    });
+                  }
+                },
+                onStepTapped: (step) => setState(() {
+                  currentStep = step;
+                }),
+                onStepCancel: currentStep == 0
+                    ? null
+                    : () => setState(() => currentStep -= 1),
+                // controlsBuilder:(BuildContext context, {VoidCallback? onStepContinue, VoidCallback? onStepCancell}) {
+                //   return Container(
+                //     child: Row(
+                //       children: [
+                //         Expanded(child: ElevatedButton(child: const Text("Next"), onPressed: onStepContinue,),
+                //         const SizedBox(width: 12),
+                //         Expanded(child: ElevatedButton(child: Text("Back"), onPressed: onStepCancel,),
+                //       ],
+                //     ),
+                //   ),
+                // },
+              ),
             ),
           )),
     );

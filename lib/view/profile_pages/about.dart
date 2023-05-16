@@ -53,11 +53,11 @@ class About extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          Row(
+             Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Column(
-                children: const [
+                children: [
                   Text(
                     'Total Donations',
                     style: TextStyle(
@@ -75,7 +75,7 @@ class About extends StatelessWidget {
                 ],
               ),
               Column(
-                children: const [
+                children: [
                   Text(
                     'Number of Donors',
                     style: TextStyle(
