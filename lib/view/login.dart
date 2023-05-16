@@ -152,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      GoogleSignInClass.googleSigniN();
+                      GoogleSignInClass.googleSigniN(context);
                     },
                     icon: Container(
                       decoration: BoxDecoration(

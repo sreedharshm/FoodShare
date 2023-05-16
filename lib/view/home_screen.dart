@@ -37,7 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     return WillPopScope(
       onWillPop: () async {
         if (_isAppBarTransparent == false) {
@@ -60,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: const Color.fromARGB(255, 130, 130, 130),
               fontSize: 20,
               fontWeight: FontWeight.normal),
-          title: const Text("Charities near you"),
+          title: Text("Charities near you"),
         ),
         body: SingleChildScrollView(
           controller: _scrollController,
@@ -114,84 +113,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Image(
                                               image: NetworkImage(imageUrl),
                                               fit: BoxFit.cover,
-=======
-    return Scaffold(
-      appBar: AppBar(
-        shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
-        toolbarHeight: 60,
-        centerTitle: true,
-        titleTextStyle: GoogleFonts.montserrat(
-            color: const Color.fromARGB(255, 130, 130, 130),
-            fontSize: 20,
-            fontWeight: FontWeight.normal),
-        title: const Text("Charities near you"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // const Text(
-            //     textAlign: TextAlign.start,
-            //     style: TextStyle(
-            //         fontSize: 20,
-            //         color: Colors.black87,
-            //         fontFamily: 'Schyler',
-            //         fontWeight: FontWeight.w200),
-            //     "Charities near you"),
-
-            //ithu vene matiko
-
-            const Text(
-              "Kottayam",
-              style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.normal),
-            ),
-            StreamBuilder(
-                stream: orgDetails.snapshots(),
-                builder: (context, AsyncSnapshot snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                        physics: const ScrollPhysics(),
-                        itemBuilder: (BuildContext context, int index) {
-                          final DocumentSnapshot orgDetailsnap =
-                              snapshot.data.docs[index];
-                          String imageUrl = orgDetailsnap['image'];
-                          String orgName = orgDetailsnap['name'];
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: tdBlue),
-                              height: MediaQuery.of(context).size.height * 0.4,
-                              //color: Colors.orange,
-                              child: Column(
-                                //mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Expanded(
-                                      flex: 5,
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional.bottomCenter,
-                                        fit: StackFit.expand,
-                                        children: [
-                                          Image(
-                                            image: NetworkImage(imageUrl),
-                                            fit: BoxFit.cover,
-                                          ),
-                                          Container(
-                                            alignment: Alignment.bottomLeft,
-                                            child: Text(
-                                              orgName,
-                                              style: GoogleFonts.montserrat(
-                                                  color: const Color.fromARGB(
-                                                      255, 255, 255, 255),
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold),
->>>>>>> 76fc7f9bafa0ec6f175957062928f4c046afc5a5
                                             ),
                                             Container(
                                               decoration: BoxDecoration(
@@ -240,25 +161,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             onPressed: () {},
                                             child: const Text("Donate")),
                                       ),
-<<<<<<< HEAD
                                     )),
                                   ],
                                 ),
-=======
-                                      trailing: ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const DonatePage()),
-                                            );
-                                          },
-                                          child: const Text("Donate")),
-                                    ),
-                                  )),
-                                ],
->>>>>>> 76fc7f9bafa0ec6f175957062928f4c046afc5a5
                               ),
                             );
                           },
