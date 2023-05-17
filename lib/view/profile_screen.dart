@@ -52,7 +52,7 @@ class Profile1 extends StatelessWidget {
                       backgroundColor: tdBlue,
                       side: BorderSide.none,
                       shape: const StadiumBorder()),
-                  child: const Column(
+                  child:  Column(
                     children: [
                       Text('Edit Profile', style: TextStyle(color: tdWhite)),
                     ],
