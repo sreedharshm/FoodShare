@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodproject/view/color.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -9,7 +10,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         shadowColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
+        backgroundColor: tdBGcolor,
         toolbarHeight: 60,
         centerTitle: true,
         titleTextStyle: GoogleFonts.montserrat(
