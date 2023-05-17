@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foodproject/view/color.dart';
@@ -14,21 +15,40 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  List searchResult = [];
+  final user = FirebaseAuth.instance.currentUser;
+  bool isLoading = false;
 
-  void searchFromFirebase(String query) async {
-    final result = await FirebaseFirestore.instance
-        .collection('Organisations')
-        .where(
-          'name_array',
-          arrayContains: query,
-        )
-        .get();
+  List<Map<String, dynamic>> _allUsers = [];
 
-    setState(() {
-      searchResult = result.docs.map((e) => (e) => e.data).toList();
-    });
+  //list docIDs
+  List<String> docIDs = [];
+
+  //get docIDs
+  // Future<void> getDocId() async {
+  //   print('start');
+  //   await FirebaseFirestore.instance.collection('Organisations').get().then(
+  //         (snapshot) => snapshot.docs.forEach(
+  //           (document) {
+  //             print(document.reference);
+  //             docIDs.add(document.reference.id);
+  //           },
+  //         ),
+  //       );
+  // }
+  // Example: Print debug statements
+  Future<void> getDocId() async {
+    print('getDocId() called'); // Debug statement
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('Organisations').get();
+    print('Documents: ${querySnapshot.docs.length}'); // Debug statement
+
+    List<QueryDocumentSnapshot> documents = querySnapshot.docs;
+    for (var document in documents) {
+      print(document.id);
+      docIDs.add(document.id);
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,35 +64,15 @@ class _SearchState extends State<Search> {
             fontSize: 20,
             fontWeight: FontWeight.normal),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(45)),
-                ),
-                hintText: "Search Your Favourite Charity",
-                icon: Icon(Icons.search),
-              ),
-              onChanged: (query) {
-                searchFromFirebase(query);
+      body: Column(children: [
+        Center(
+          child: ElevatedButton(
+              onPressed: () async {
+                await getDocId();
               },
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: searchResult.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(searchResult[index]['name_array']),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
+              child: const Text('ids')),
+        )
+      ]),
     );
   }
 }
