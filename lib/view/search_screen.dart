@@ -15,13 +15,15 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  final user = FirebaseAuth.instance.currentUser;
-  bool isLoading = false;
+  final CollectionReference orgDetails =
+      FirebaseFirestore.instance.collection('Organisations');
+  // final user = FirebaseAuth.instance.currentUser;
+  // bool isLoading = false;
 
-  List<Map<String, dynamic>> _allUsers = [];
+  // List<Map<String, dynamic>> _allUsers = [];
 
-  //list docIDs
-  List<String> docIDs = [];
+  // //list docIDs
+  // List<String> docIDs = [];
 
   //get docIDs
   // Future<void> getDocId() async {
@@ -36,43 +38,86 @@ class _SearchState extends State<Search> {
   //       );
   // }
   // Example: Print debug statements
-  Future<void> getDocId() async {
-    print('getDocId() called'); // Debug statement
-    QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection('Organisations').get();
-    print('Documents: ${querySnapshot.docs.length}'); // Debug statement
-
-    List<QueryDocumentSnapshot> documents = querySnapshot.docs;
-    for (var document in documents) {
-      print(document.id);
-      docIDs.add(document.id);
-    }
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        shadowColor: Colors.transparent,
-        backgroundColor: tdBGcolor,
-        toolbarHeight: 60,
-        centerTitle: true,
-        title: const Text('Search'),
-        titleTextStyle: GoogleFonts.montserrat(
-            color: const Color.fromARGB(255, 130, 130, 130),
-            fontSize: 20,
-            fontWeight: FontWeight.normal),
-      ),
-      body: Column(children: [
-        Center(
-          child: ElevatedButton(
-              onPressed: () async {
-                await getDocId();
-              },
-              child: const Text('ids')),
-        )
-      ]),
-    );
+        appBar: AppBar(
+          shadowColor: Colors.transparent,
+          backgroundColor: tdBGcolor,
+          toolbarHeight: 60,
+          centerTitle: true,
+          title: const Text('Search'),
+          titleTextStyle: GoogleFonts.montserrat(
+              color: const Color.fromARGB(255, 130, 130, 130),
+              fontSize: 20,
+              fontWeight: FontWeight.normal),
+        ),
+        body: StreamBuilder(
+            stream: orgDetails.orderBy('name').snapshots(),
+            builder: (context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  itemCount: snapshot.data!.docs.length,
+                  itemBuilder: (context, index) {
+                    final DocumentSnapshot orgSnap = snapshot.data!.docs[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            borderRadius: BorderRadius.circular(25),
+                            boxShadow: [
+                              BoxShadow(
+                                  color:
+                                      const Color.fromARGB(255, 200, 200, 200)
+                                          .withOpacity(0.1),
+                                  spreadRadius: 5,
+                                  blurRadius: 5)
+                            ]),
+                        height: 70,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(
+                                    orgSnap['acc_image'].toString()),
+                              ),
+                            ),
+                            Flexible(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        orgSnap['name'],
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    Flexible(
+                                        child: Text(
+                                      orgSnap['address'],
+                                      style: TextStyle(fontSize: 15),
+                                    ))
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              } else {
+                return Center(child: Text("no data here!"));
+              }
+            }));
   }
 }
