@@ -115,12 +115,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
               const SizedBox(
                 height: 35,
               ),
-              buildTextField("Full Name", "example", false),
+              buildTextField("Full Name", "example", false,),
               buildTextField("E-mail", "example@gmail.com", false),
-              buildTextField("Password", "********", true),
+              buildTextField("bio", "ur thought", false),
               buildTextField("Location", "EG, Example", false),
               const SizedBox(
                 height: 35,
+                child: Opacity(opacity: 0.6),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
