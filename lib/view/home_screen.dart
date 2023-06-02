@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodproject/view/color.dart';
+import 'package:foodproject/view/contribute.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -14,8 +15,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final CollectionReference orgDetails =
-      FirebaseFirestore.instance.collection('Organisations');
+  // final CollectionReference orgDetails =
+  //     FirebaseFirestore.instance.collection('Organisations');
 
   bool _isAppBarTransparent = true;
   final ScrollController _scrollController = ScrollController();
@@ -81,7 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               StreamBuilder(
-                  stream: orgDetails.snapshots(),
+                  stream: FirebaseFirestore.instance
+                      .collection('Organisations')
+                      .snapshots(),
                   builder: (context, AsyncSnapshot snapshot) {
                     if (snapshot.hasData) {
                       return ListView.builder(
@@ -92,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             String imageUrl = orgDetailsnap['image'];
                             String orgName = orgDetailsnap['name'];
                             String accImage = orgDetailsnap["acc_image"];
+                            String orgid = orgDetailsnap['org_id'];
                             return Padding(
                               padding: const EdgeInsets.all(20),
                               child: Container(
@@ -157,7 +161,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                           barRadius: const Radius.circular(12),
                                         ),
                                         trailing: ElevatedButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: ((context) =>
+                                                          DonatePage(
+                                                            id: orgid,
+                                                          ))));
+                                            },
                                             child: const Text("Donate")),
                                       ),
                                     )),
