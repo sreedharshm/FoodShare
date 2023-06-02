@@ -31,7 +31,10 @@ class Profile1 extends StatelessWidget {
               height: 30,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: const CircleAvatar(),
+                child: const CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      'www.tenforums.com/attachments/user-accounts-family-safety/322690d1615743307t-user-account-image-log-user.png'),
+                ),
               ),
             ),
             const SizedBox(height: 30),
@@ -52,9 +55,11 @@ class Profile1 extends StatelessWidget {
                       backgroundColor: tdBlue,
                       side: BorderSide.none,
                       shape: const StadiumBorder()),
-                  child:  Column(
+                  child: Column(
                     children: [
-                      Text('Edit Profile', style: TextStyle(color: tdWhite)),
+                      Text('Edit Profile',
+                          style: TextStyle(
+                              color: tdWhite, fontStyle: FontStyle.normal)),
                     ],
                   )),
             ),
