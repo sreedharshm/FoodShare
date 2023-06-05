@@ -20,6 +20,8 @@ class _SearchState extends State<Search> {
 
   final TextEditingController _searchName = TextEditingController();
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
