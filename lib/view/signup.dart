@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodproject/services/firebase_auth.dart';
 import 'package:foodproject/view/Navigation.dart';
+import 'package:foodproject/view/loginlogout/addmoredetails.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -12,6 +15,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
   // ignore: unused_field
   bool _isloading = false;
   signuphere() async {
@@ -20,9 +24,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
         emailController: _emailController.text.trim(),
         passwordController: _passwordController.text.trim());
     if (s == "success") {
+      await FirebaseFirestore.instance
+          .collection('Profile')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .set({
+        'name': _nameController.text.trim(),
+        'email': _emailController.text.trim(),
+        'phone': '',
+        'address': '',
+        'profileimage': '',
+        'label': 'normal',
+      });
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const NavigationScreen()),
+          MaterialPageRoute(builder: (context) => const AddMoreDetails()),
           (route) => false);
     } else {
       setState(() {
@@ -59,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 40,
               ),
               TextFormField(
-                //controller: _emailController,
+                controller: _nameController,
                 decoration: const InputDecoration(
                     filled: true,
                     hintText: "Name",

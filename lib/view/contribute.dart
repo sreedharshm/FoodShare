@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:foodproject/view/add_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -8,6 +9,7 @@ import 'color.dart';
 
 class DonatePage extends StatefulWidget {
   final String id;
+
   const DonatePage({super.key, required this.id});
 
   @override
@@ -15,6 +17,7 @@ class DonatePage extends StatefulWidget {
 }
 
 class _DonatePageState extends State<DonatePage> {
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +30,7 @@ class _DonatePageState extends State<DonatePage> {
             builder: (context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 final DocumentSnapshot snap = snapshot.data.docs[0];
+                name = snap['name'];
                 return Column(
                   children: [
                     Padding(
@@ -114,8 +118,15 @@ class _DonatePageState extends State<DonatePage> {
               width: 10,
             ),
             Expanded(
-                child:
-                    ElevatedButton(onPressed: () {}, child: Text("Donate now")))
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MyAddPage(
+                                selectCharitystring: name,
+                                currentStep: 1,
+                              )));
+                    },
+                    child: Text("Donate now")))
           ],
         ),
       ),

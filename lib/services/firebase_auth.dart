@@ -23,6 +23,8 @@ class FireAuth {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController, password: passwordController);
+      await firebaseAuth.signInWithEmailAndPassword(
+          email: emailController, password: passwordController);
       s = "success";
     } on FirebaseAuthException catch (e) {
       s = e.toString();

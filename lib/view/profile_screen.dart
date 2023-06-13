@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:foodproject/services/firebase_auth.dart';
@@ -12,8 +14,46 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'login.dart';
 
 //
-class Profile1 extends StatelessWidget {
+class Profile1 extends StatefulWidget {
   const Profile1({super.key});
+
+  @override
+  State<Profile1> createState() => _Profile1State();
+}
+
+class _Profile1State extends State<Profile1> {
+  // fetchCurrentUserDetails() async {
+  //   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //   CollectionReference usersCollection = firestore.collection('Profile');
+
+  //   usersCollection
+  //       .doc(FirebaseAuth.instance.currentUser!.uid)
+  //       .get()
+  //       .then((DocumentSnapshot documentSnapshot) {
+  //     if (documentSnapshot.exists) {
+  //       // Document exists, retrieve user details
+
+  //       data = documentSnapshot.get('profileimage')!;
+  //       name = documentSnapshot.get('name')!;
+  //       email = documentSnapshot.get('email')!;
+
+  //       // String email = data['email'];
+  //       // String username = data['username'];
+
+  //       // // Use the user details as needed
+  //       // print('Email: $email');
+  //       print(name + data + email);
+  //       print('Success');
+  //     } else {
+  //       // Document does not exist
+  //       print("no data");
+  //     }
+  //   }).catchError((error) {
+  //     // Error retrieving user details
+  //     print("error");
+  //   });
+  //   await Future.delayed(Duration(seconds: 1));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +67,50 @@ class Profile1 extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
-              width: 120,
-              height: 30,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: const CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'www.tenforums.com/attachments/user-accounts-family-safety/322690d1615743307t-user-account-image-log-user.png'),
-                ),
-              ),
+              height: 20,
             ),
-            const SizedBox(height: 30),
-            Text('Test', style: Theme.of(context).textTheme.headlineMedium),
-            Text('test@gmail.com',
-                style: Theme.of(context).textTheme.bodyMedium),
+            StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('Profile')
+                    .doc(FirebaseAuth.instance.currentUser!.uid)
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+                  if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Text('Loading...');
+                  }
+
+                  if (!snapshot.hasData || snapshot.data == null) {
+                    return Text('No data found.');
+                  }
+                  if (snapshot.hasData) {
+                    var userData = snapshot.data!.data() as Map;
+                    String name = userData['name'];
+                    String email = userData['email'];
+                    String data = userData['profileimage'];
+                    return Column(children: [
+                      data == ''
+                          ? CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(
+                                  'https://firebasestorage.googleapis.com/v0/b/foodproject-cfd0e.appspot.com/o/user%2Fprofileimages%2Fprofile-icon-9.png?alt=media&token=d2d64964-f3d5-4d40-bacf-4baed7b1275b'),
+                            )
+                          : CircleAvatar(
+                              radius: 50,
+                              backgroundImage: NetworkImage(data),
+                            ),
+                      Text(name,
+                          style: Theme.of(context).textTheme.headlineMedium),
+                      Text(email,
+                          style: Theme.of(context).textTheme.bodyMedium),
+                    ]);
+                  } else
+                    return Container();
+                }),
             const SizedBox(height: 20),
             SizedBox(
               width: 200,

@@ -5,6 +5,7 @@ import 'package:foodproject/view/color.dart';
 import 'package:foodproject/view/home_screen.dart';
 import 'package:foodproject/view/login.dart';
 import 'package:flutter/src/services/system_chrome.dart';
+import 'package:foodproject/view/loginlogout/addmoredetails.dart';
 import 'package:foodproject/view/navigation.dart';
 import 'package:foodproject/view/profile_pages/editaddress.dart';
 
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
           stream: FireAuth().firebaseAuth.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return EditAddress();
+              return NavigationScreen();
             } else {
               return LoginScreen();
             }

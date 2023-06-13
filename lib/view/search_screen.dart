@@ -20,8 +20,6 @@ class _SearchState extends State<Search> {
 
   final TextEditingController _searchName = TextEditingController();
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,7 +174,16 @@ class _SearchState extends State<Search> {
                                     iconSize: 40,
                                     color: tdBlue,
                                     splashColor: Colors.grey,
-                                    onPressed: () {})
+                                    onPressed: () {
+                                      FirebaseFirestore.instance
+                                          .collection('Profile')
+                                          .doc(FirebaseAuth
+                                              .instance.currentUser!.uid)
+                                          .set({
+                                        'name': 'fff',
+                                        'email': 'dsfsdfs'
+                                      });
+                                    })
                               ],
                             ),
                           ),

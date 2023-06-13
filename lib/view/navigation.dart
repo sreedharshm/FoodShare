@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:foodproject/view/add_screen.dart';
 import 'package:foodproject/view/home_screen.dart';
+import 'package:foodproject/view/loginlogout/addmoredetails.dart';
 
 import 'package:foodproject/view/notification_screen.dart';
 import 'package:foodproject/view/profile_screen.dart';
@@ -26,7 +27,10 @@ class _NavigationScreenState extends State<NavigationScreen> {
   final screen = [
     const HomeScreen(),
     const Search(),
-    const Add(),
+    const MyAddPage(
+      selectCharitystring: "",
+      currentStep: 0,
+    ),
     const Notificationscreen(),
     const Profile1()
   ];
