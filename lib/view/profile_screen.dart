@@ -92,6 +92,7 @@ class _Profile1State extends State<Profile1> {
                     String name = userData['name'];
                     String email = userData['email'];
                     String data = userData['profileimage'];
+
                     return Column(children: [
                       data == ''
                           ? CircleAvatar(

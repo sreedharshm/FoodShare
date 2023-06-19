@@ -123,6 +123,7 @@ class _DonatePageState extends State<DonatePage> {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MyAddPage(
                                 selectCharitystring: name,
+                                orgid: widget.id,
                                 currentStep: 1,
                               )));
                     },

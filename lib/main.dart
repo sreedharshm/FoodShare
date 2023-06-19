@@ -1,13 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:foodproject/services/firebase_auth.dart';
-import 'package:foodproject/view/color.dart';
-import 'package:foodproject/view/home_screen.dart';
 import 'package:foodproject/view/login.dart';
 import 'package:flutter/src/services/system_chrome.dart';
-import 'package:foodproject/view/loginlogout/addmoredetails.dart';
 import 'package:foodproject/view/navigation.dart';
-import 'package:foodproject/view/profile_pages/editaddress.dart';
 
 //import 'package:foodproject/view/login.dart';
 
@@ -54,7 +50,7 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData) {
               return NavigationScreen();
             } else {
-              return LoginScreen();
+              return const LoginScreen();
             }
           }),
       debugShowCheckedModeBanner: false,

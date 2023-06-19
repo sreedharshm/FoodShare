@@ -13,6 +13,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  bool? val = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();
@@ -33,7 +34,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         'phone': '',
         'address': '',
         'profileimage': '',
-        'label': 'normal',
+        'label': val! ? "org" : "normal",
       });
       Navigator.pushAndRemoveUntil(
           context,
@@ -52,6 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           padding: const EdgeInsets.all(16),
           decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -115,6 +117,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               const SizedBox(
                 height: 30,
+              ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: val,
+                    onChanged: (value) {
+                      setState(() {
+                        val = value;
+                      });
+                    },
+                  ),
+                  Text("You are an Organisation")
+                ],
               ),
               ElevatedButton(
                 onPressed: () {

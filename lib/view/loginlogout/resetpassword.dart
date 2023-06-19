@@ -14,11 +14,15 @@ class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Forgot Password"),
-      ),
+      // appBar: AppBar(
+      //   title: const Text("Forgot Password"),
+      // ),
       body: Column(
         children: [
+          Container(
+            color: Colors.transparent,
+            height: MediaQuery.of(context).size.height * 0.5,
+          ),
           const SizedBox(
             height: 50,
           ),

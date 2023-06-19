@@ -29,6 +29,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
     const Search(),
     const MyAddPage(
       selectCharitystring: "",
+      orgid: "",
       currentStep: 0,
     ),
     const Notificationscreen(),

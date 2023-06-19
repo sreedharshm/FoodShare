@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -6,8 +8,12 @@ import 'color.dart';
 class MyAddPage extends StatefulWidget {
   final String selectCharitystring;
   final int currentStep;
+  final String orgid;
   const MyAddPage(
-      {Key? key, required this.selectCharitystring, required this.currentStep})
+      {Key? key,
+      required this.selectCharitystring,
+      required this.orgid,
+      required this.currentStep})
       : super(key: key);
   @override
   MyAddPageState createState() => MyAddPageState();
@@ -23,6 +29,7 @@ class MyAddPageState extends State<MyAddPage> {
   TextEditingController selectCharity = TextEditingController();
   void assign() {
     selectCharity.text = widget.selectCharitystring;
+    print(widget.orgid);
   }
 
 // final itemName = TextEditingController();
@@ -69,7 +76,21 @@ class MyAddPageState extends State<MyAddPage> {
           state: currentStep > 2 ? StepState.complete : StepState.indexed,
           isActive: currentStep >= 2,
           title: const Text("Complete"),
-          content: SingleChildScrollView(child: Container()),
+          content: SingleChildScrollView(
+              child: Container(
+            child: ElevatedButton(
+              child: Text("Confirm"),
+              onPressed: () {
+                FirebaseFirestore.instance.collection('Orders').add({
+                  "sender": FirebaseAuth.instance.currentUser!.uid,
+                  "receiver": widget.orgid,
+                  "item": itemName.text,
+                  "progress": "0",
+                  "quantiy": itemQuantity.text
+                });
+              },
+            ),
+          )),
         )
       ];
   @override
@@ -102,7 +123,9 @@ class MyAddPageState extends State<MyAddPage> {
             child: OverflowBox(
               child: Stepper(
                 //physics: const ScrollPhysics(),
-
+                controlsBuilder: (context, controller) {
+                  return const SizedBox.shrink();
+                },
                 type: StepperType.horizontal,
                 steps: getSteps(),
                 currentStep: currentStep,
