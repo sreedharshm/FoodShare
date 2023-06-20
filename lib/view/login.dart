@@ -152,7 +152,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      GoogleSignInClass.googleSigniN(context);
+                      if (GoogleSignInClass.googleSigniN(context) == 'success')
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => NavigationScreen()));
                     },
                     icon: Container(
                       decoration: BoxDecoration(
@@ -173,24 +175,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     width: 10,
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: Colors.white,
-                            style: BorderStyle.solid,
-                            width: 3,
-                          )),
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        "assets/images/facebook.png",
-                        height: 40,
-                      ),
-                    ),
-                    iconSize: 65,
-                  )
+                  // IconButton(
+                  //   onPressed: () {},
+                  //   icon: Container(
+                  //     decoration: BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(12),
+                  //         border: Border.all(
+                  //           color: Colors.white,
+                  //           style: BorderStyle.solid,
+                  //           width: 3,
+                  //         )),
+                  //     padding: const EdgeInsets.all(8.0),
+                  //     child: Image.asset(
+                  //       "assets/images/facebook.png",
+                  //       height: 40,
+                  //     ),
+                  //   ),
+                  //   iconSize: 65,
+                  // )
                 ],
               ),
               const SizedBox(

@@ -100,6 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     return ListView.builder(
                         physics: const ScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
+                          //Cd = Colors.white;
                           final DocumentSnapshot orgDetailsnap =
                               snapshot.data.docs[index];
                           String imageUrl = orgDetailsnap['image'];
@@ -163,8 +164,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     color: Colors.white10,
                                     child: ListTile(
                                       leading: IconButton(
-                                          onPressed: () {},
-                                          icon: const Icon(Icons.favorite)),
+                                        onPressed: () {
+                                          // setState(() {
+                                          //   Cd = Colors.red;
+                                          // });
+                                        },
+                                        icon: const Icon(Icons.favorite),
+                                      ),
                                       title: LinearPercentIndicator(
                                         barRadius: const Radius.circular(12),
                                       ),

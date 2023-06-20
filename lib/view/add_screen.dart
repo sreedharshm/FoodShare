@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:foodproject/view/notification_screen.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'color.dart';
@@ -85,9 +86,27 @@ class MyAddPageState extends State<MyAddPage> {
                   "sender": FirebaseAuth.instance.currentUser!.uid,
                   "receiver": widget.orgid,
                   "item": itemName.text,
-                  "progress": "0",
-                  "quantiy": itemQuantity.text
+                  "progress": 0,
+                  "quantiy": itemQuantity.text,
+                  "receivername": selectCharity.text,
+                }).then((DocumentReference doc) {
+                  FirebaseFirestore.instance
+                      .collection('Profile')
+                      .doc(FirebaseAuth.instance.currentUser!.uid)
+                      .update({
+                    "orders": FieldValue.arrayUnion([doc.id])
+                  });
+                  FirebaseFirestore.instance
+                      .collection('Profile')
+                      .doc('receiver')
+                      .update({
+                    "orders": FieldValue.arrayUnion([doc.id])
+                  });
                 });
+
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Notificationscreen()),
+                );
               },
             ),
           )),
@@ -96,67 +115,97 @@ class MyAddPageState extends State<MyAddPage> {
   @override
   Widget build(BuildContext context) {
     assign();
-    return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
-      child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          appBar: AppBar(
-            shadowColor: Colors.transparent,
-            backgroundColor: tdBGcolor,
-            toolbarHeight: 60,
-            centerTitle: true,
-            titleTextStyle: GoogleFonts.montserrat(
-                color: const Color.fromARGB(255, 130, 130, 130),
-                fontSize: 20,
-                fontWeight: FontWeight.normal),
-            title: const Text("Donate now"),
-          ),
-          body: Theme(
-            data: ThemeData(
-              colorScheme: const ColorScheme.light(primary: tdBlue),
-            ),
-            child: OverflowBox(
-              child: Stepper(
-                //physics: const ScrollPhysics(),
-                controlsBuilder: (context, controller) {
-                  return const SizedBox.shrink();
-                },
-                type: StepperType.horizontal,
-                steps: getSteps(),
-                currentStep: currentStep,
-                onStepContinue: () {
-                  if (currentStep < (getSteps().length - 1)) {
-                    setState(() => currentStep += 1);
-                    setState(() {
-                      isCompleted = true;
-                    });
+    return StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('Profile')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .snapshots(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Text('Loading...');
+          }
+
+          if (!snapshot.hasData || snapshot.data == null) {
+            return Text('No data found.');
+          }
+          if (snapshot.hasData) {
+            var userData = snapshot.data!.data() as Map;
+            String label = userData['label'];
+            if (label != 'org') {
+              return GestureDetector(
+                onTap: () {
+                  FocusScopeNode currentFocus = FocusScope.of(context);
+                  if (!currentFocus.hasPrimaryFocus) {
+                    currentFocus.unfocus();
                   }
                 },
-                onStepTapped: (step) => setState(() {
-                  currentStep = step;
-                }),
-                onStepCancel: currentStep == 0
-                    ? null
-                    : () => setState(() => currentStep -= 1),
-                // controlsBuilder:(BuildContext context, {VoidCallback? onStepContinue, VoidCallback? onStepCancell}) {
-                //   return Container(
-                //     child: Row(
-                //       children: [
-                //         Expanded(child: ElevatedButton(child: const Text("Next"), onPressed: onStepContinue,),
-                //         const SizedBox(width: 12),
-                //         Expanded(child: ElevatedButton(child: Text("Back"), onPressed: onStepCancel,),
-                //       ],
-                //     ),
-                //   ),
-                // },
-              ),
-            ),
-          )),
-    );
+                child: Scaffold(
+                    resizeToAvoidBottomInset: false,
+                    appBar: AppBar(
+                      shadowColor: Colors.transparent,
+                      backgroundColor: tdBGcolor,
+                      toolbarHeight: 60,
+                      centerTitle: true,
+                      titleTextStyle: GoogleFonts.montserrat(
+                          color: const Color.fromARGB(255, 130, 130, 130),
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal),
+                      title: const Text("Donate now"),
+                    ),
+                    body: Theme(
+                      data: ThemeData(
+                        colorScheme: const ColorScheme.light(primary: tdBlue),
+                      ),
+                      child: OverflowBox(
+                        child: Stepper(
+                          //physics: const ScrollPhysics(),
+                          controlsBuilder: (context, controller) {
+                            return const SizedBox.shrink();
+                          },
+                          type: StepperType.horizontal,
+                          steps: getSteps(),
+                          currentStep: currentStep,
+                          onStepContinue: () {
+                            if (currentStep < (getSteps().length - 1)) {
+                              setState(() => currentStep += 1);
+                              setState(() {
+                                isCompleted = true;
+                              });
+                            }
+                          },
+                          onStepTapped: (step) => setState(() {
+                            currentStep = step;
+                          }),
+                          onStepCancel: currentStep == 0
+                              ? null
+                              : () => setState(() => currentStep -= 1),
+                          // controlsBuilder:(BuildContext context, {VoidCallback? onStepContinue, VoidCallback? onStepCancell}) {
+                          //   return Container(
+                          //     child: Row(
+                          //       children: [
+                          //         Expanded(child: ElevatedButton(child: const Text("Next"), onPressed: onStepContinue,),
+                          //         const SizedBox(width: 12),
+                          //         Expanded(child: ElevatedButton(child: Text("Back"), onPressed: onStepCancel,),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // },
+                        ),
+                      ),
+                    )),
+              );
+            } else {
+              return Scaffold(
+                  body: Center(child: Text("Organisations cannot donate ")));
+            }
+          } else {
+            return Container();
+          }
+        });
   }
 }

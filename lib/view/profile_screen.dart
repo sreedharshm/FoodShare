@@ -9,6 +9,7 @@ import 'package:foodproject/view/profile_pages/editprofile.dart';
 import 'package:foodproject/view/profile_pages/help.dart';
 import 'package:foodproject/view/profile_pages/history.dart';
 import 'package:foodproject/view/profile_pages/settings.dart';
+import 'package:foodproject/view/yourorders.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import 'login.dart';
@@ -138,11 +139,11 @@ class _Profile1State extends State<Profile1> {
             const Divider(),
             const SizedBox(height: 20),
             ProfileMenuWidget(
-              title: 'Settings',
+              title: 'Your Orders',
               icon: Icons.settings,
               onPress: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const SettingsScreen()));
+                    builder: (context) => const YourOrderPage()));
               },
             ),
             ProfileMenuWidget(

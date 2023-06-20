@@ -60,18 +60,19 @@ class _DonatePageState extends State<DonatePage> {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                          leading: Icon(Icons.favorite),
-                          title: Column(children: [
-                            LinearPercentIndicator(
-                                barRadius: const Radius.circular(18)),
-                            Text("22/2 Donations")
-                          ])),
-                    ),
+
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: ListTile(
+                    //       leading: Icon(Icons.favorite),
+                    //       title: Column(children: [
+                    //         LinearPercentIndicator(
+                    //             barRadius: const Radius.circular(18)),
+                    //         Text("22/2 Donations")
+                    //       ])),
+                    // ),
                     SizedBox(
-                      height: 10,
+                      height: 50,
                     ),
                     Image(
                       image: NetworkImage(snap['image']),
@@ -80,15 +81,18 @@ class _DonatePageState extends State<DonatePage> {
                       fit: BoxFit.cover,
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 45,
                     ),
-                    Text(
-                      "About this Charity",
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.openSans(
-                          //color: tdWhite,
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold),
+                    Container(
+                      width: 300,
+                      child: Text(
+                        "'Giving is not just making a donation, it is making a difference'",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.openSans(
+                            //color: tdWhite,
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     SizedBox(
                       height: 10,
@@ -111,14 +115,15 @@ class _DonatePageState extends State<DonatePage> {
           // mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Expanded(
-                child:
-                    ElevatedButton(onPressed: () {}, child: Text("wish list"))),
-            SizedBox(
-              width: 10,
-            ),
+            // Expanded(
+            //     child:
+            //         ElevatedButton(onPressed: () {}, child: Text("wish list"))),
+            // SizedBox(
+            //   width: 10,
+            // ),
             Expanded(
                 child: ElevatedButton(
+                    style: ButtonStyle(),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => MyAddPage(
